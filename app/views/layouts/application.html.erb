@@ -1,14 +1,54 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Itshare</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <meta charset="utf-8"/>
+    <title>IT职业人员求职、笔试、面试经验分享，IT企业工资待遇、企业文化点评...</title>
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= stylesheet_link_tag "bootstrap",:media => "all" %>
+    <%= stylesheet_link_tag "bootstrap-responsive",:media => "all" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="index.html">IT分享网</a>
 
-<%= yield %>
+          <div class="nav-collapse collapse">
+            <form class="navbar-form pull-right">
+              <input class="span2" type="text" placeholder="Email">
+              <input class="span2" type="password" placeholder="Password">
+              <button type="submit" class="btn">Sign in</button>
+            </form>
+            <ul class="nav pull-right">
+              <li class="active"><a href="#">首页</a></li>
+              <li><a href="#contact">求职经验</a></li>
+              <li><a href="#contact">企业点评</a></li>
+              <li><a href="#contact">招聘信息</a></li>
+              <li><a href="#about">关于IT分享网</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
 
-</body>
+    <div class="container">
+
+      <%= yield %>
+
+      <hr>
+
+      <footer>
+        <p>© Company 2012</p>
+      </footer>
+    </div>
+
+    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "bootstrap" %>
+  </body>
 </html>
