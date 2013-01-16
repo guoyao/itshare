@@ -1,0 +1,18 @@
+<% @experiences.each do |experience| %>
+  <div class="row">
+    <%= image_tag 'http://placehold.it/48x48' %>
+    <span style="vertical-align: top;">
+      <%= experience.company %>
+      <%= experience.title %>
+      <%= truncate(experience.details, :length => 10).html_safe %>
+    </span>
+    <div class="pull-right">
+      <%= link_to '全文', experience %>
+      <%= link_to '编辑', edit_experience_path(experience) %>
+      <%= link_to '删除', experience, method: :delete, data: {confirm: 'Are you sure?'} %>
+    </div>
+    <hr>
+  </div>
+<% end %>
+
+<%= link_to '发表经验 »', new_experience_path, :class => 'btn' %>
