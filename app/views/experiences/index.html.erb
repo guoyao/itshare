@@ -1,19 +1,21 @@
 <% @experiences.each do |experience| %>
-    <div class="row" xmlns="http://www.w3.org/1999/html">
-      <div class="span12">
-        <%= image_tag 'http://placehold.it/48x48', :class => 'thumbnail pull-left' %>
-        <p class="pull-left span10" style="margin-left: 15px;">
-          <%= link_to experience.title, experience_path(experience) %><br/>
-          <small>公司名称：<%= experience.company %><span style="margin-left: 10px;">时间：<%= experience.updated_at.to_formatted_s(:db) %></span></small><br/>
-          <%= truncate(experience.details, :length => 200).html_safe %>
-        </p>
-        <div class="pull-right">
-          <%= link_to '全文', experience %>
-          <%= link_to '编辑', edit_experience_path(experience) %>
-          <%= link_to '删除', experience, method: :delete, data: {confirm: 'Are you sure?'} %>
-        </div>
-        <hr class="clear-both"/>
+    <div class="row-fluid">
+      <%= image_tag 'http://placehold.it/48x48', :class => 'thumbnail pull-left' %>
+      <p class="pull-left span9" style="margin-left: 10px;">
+        <%= link_to experience.title, experience_path(experience) %>
+        <br/>
+        <small>公司名称：<%= experience.company %>
+          <span style="margin-left: 10px;">时间：<%= experience.updated_at.to_formatted_s(:db) %></span>
+        </small>
+        <br/>
+        <%= truncate(experience.details, :length => 120).html_safe %>
+      </p>
+      <div class="pull-right">
+        <%= link_to '全文', experience %>
+        <%= link_to '编辑', edit_experience_path(experience) %>
+        <%= link_to '删除', experience, method: :delete, data: {confirm: 'Are you sure?'} %>
       </div>
+      <hr class="clear-both"/>
     </div>
 <% end %>
 
