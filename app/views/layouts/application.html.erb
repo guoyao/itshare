@@ -6,6 +6,9 @@
     <%= stylesheet_link_tag 'bootstrap', :media => 'all' %>
     <%= stylesheet_link_tag 'bootstrap-responsive', :media => 'all' %>
     <%= stylesheet_link_tag 'application', :media => 'all' %>
+    <% if action_name == 'create' || action_name == 'update' then %>
+      <%= stylesheet_link_tag 'scaffolds', :media => 'all' %>
+    <% end %>
     <%= csrf_meta_tags %>
   </head>
   <body>
