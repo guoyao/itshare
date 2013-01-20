@@ -1,9 +1,13 @@
 Itshare::Application.routes.draw do
+  get "users/new"
+
   resources :jobs
 
   resources :reviews
 
   resources :experiences
+
+  resources :comments, only: [:create, :destroy]
 
   get 'about' => 'about#index', :as => :about
 

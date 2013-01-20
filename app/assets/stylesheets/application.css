@@ -71,6 +71,11 @@ form {
   border-radius: 4px 4px 0 0;
 }
 
+.top-title-container[class*='higher'] {
+  height: 48px;
+  line-height: 25px;
+}
+
 .bottom-title-container {
   padding: 10px;
   margin: 0;
@@ -84,9 +89,23 @@ form {
   border-radius: 0 0 4px 4px;
 }
 
+.bottom-title-container[class*='higher'] {
+  height: 48px;
+  line-height: 25px;
+}
+
 .divider {
   padding: 0 5px;
   color: #ccc;
+}
+
+.dot-divider {
+  padding: 0 5px;
+  color: #999;
+}
+
+.margin-bottom20 {
+  margin-bottom: 20px;
 }
 
 /* scaffold styles */

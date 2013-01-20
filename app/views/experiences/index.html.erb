@@ -1,17 +1,24 @@
-<div class="top-title-container">
-  共检索到 2 条记录
-</div>
+<div class="table-bordered border-left">
+  <div class="top-title-container">
+    共检索到 2 条记录
+  </div>
 
-<div class="padding10">
-  <% @experiences.each do |experience| %>
+  <div class="padding10">
+    <% @experiences.each do |experience| %>
       <div class="row-fluid">
         <%= image_tag 'http://placehold.it/48x48', :class => 'thumbnail pull-left' %>
         <p class="pull-left span9" style="margin-left: 10px;">
           <%= link_to experience.title, experience_path(experience) %>
           <br/>
           <small>
-            <span class="padding-right10" style="display:<%= experience.company.strip.empty? ? 'none' : 'inline' %>;">@<%= experience.company %></span>
+            <span style="display:<%= experience.company.strip.empty? ? 'none' : 'inline' %>;">
+              @<%= experience.company %><span class="dot-divider">•</span>
+            </span>
             <span><%= experience.created_at_from_now %></span>
+            <span class="dot-divider">•</span>
+            <% if experience.comments.count > 0 then %>
+              共<%= experience.comments.count %>条回复
+            <% end %>
           </small>
           <br/>
           <%= truncate(experience.details, :length => 120).html_safe %>
@@ -23,10 +30,11 @@
         </div>
         <hr class="clear-both"/>
       </div>
-  <% end %>
-  <%= link_to '发表经验 »', new_experience_path, :class => 'btn' %>
-</div>
+    <% end %>
+    <%= link_to '发表经验 »', new_experience_path, :class => 'btn' %>
+  </div>
 
-<div class="bottom-title-container">
-  共检索到 2 条记录
+  <div class="bottom-title-container">
+    共检索到 2 条记录
+  </div>
 </div>

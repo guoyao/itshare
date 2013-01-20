@@ -6,14 +6,6 @@
     <%= stylesheet_link_tag 'bootstrap', :media => 'all' %>
     <%= stylesheet_link_tag 'bootstrap-responsive', :media => 'all' %>
     <%= stylesheet_link_tag 'application', :media => 'all' %>
-    <% if action_name == 'show' then %>
-      <style type="text/css">
-        .top-title-container {
-          height: 48px;
-          line-height: 25px;
-        }
-      </style>
-    <% end %>
     <%= csrf_meta_tags %>
   </head>
   <body>
@@ -47,7 +39,7 @@
 
     <div class="container">
       <div class="row">
-        <div class="span9 table-bordered border-left">
+        <div class="span9">
           <%= yield %>
         </div>
 
