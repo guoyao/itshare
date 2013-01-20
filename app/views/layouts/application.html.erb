@@ -6,6 +6,14 @@
     <%= stylesheet_link_tag 'bootstrap', :media => 'all' %>
     <%= stylesheet_link_tag 'bootstrap-responsive', :media => 'all' %>
     <%= stylesheet_link_tag 'application', :media => 'all' %>
+    <% if action_name == 'show' then %>
+      <style type="text/css">
+        .top-title-container {
+          height: 48px;
+          line-height: 25px;
+        }
+      </style>
+    <% end %>
     <%= csrf_meta_tags %>
   </head>
   <body>
@@ -26,11 +34,11 @@
               <button type="submit" class="btn">Sign in</button>
             </form>
             <ul class="nav pull-right" style="margin-right: 6px;">
-              <li class="<%= controller.controller_name == 'index' ? 'active' : '' %>"><a href="/">首页</a></li>
-              <li class="<%= controller.controller_name == 'experiences' ? 'active' : '' %>"><%= link_to '求职经验', experiences_path %></li>
-              <li class="<%= controller.controller_name == 'reviews' ? 'active' : '' %>"><%= link_to '企业点评', reviews_path %></li>
-              <li class="<%= controller.controller_name == 'jobs' ? 'active' : '' %>"><%= link_to '招聘信息', jobs_path %></li>
-              <li class="<%= controller.controller_name == 'about' ? 'active' : '' %>"><%= link_to '关于IT分享网', about_path %></li>
+              <li class="<%= controller_name == 'index' ? 'active' : '' %>"><a href="/">首页</a></li>
+              <li class="<%= controller_name == 'experiences' ? 'active' : '' %>"><%= link_to '求职经验', experiences_path %></li>
+              <li class="<%= controller_name == 'reviews' ? 'active' : '' %>"><%= link_to '企业点评', reviews_path %></li>
+              <li class="<%= controller_name == 'jobs' ? 'active' : '' %>"><%= link_to '招聘信息', jobs_path %></li>
+              <li class="<%= controller_name == 'about' ? 'active' : '' %>"><%= link_to '关于IT分享网', about_path %></li>
             </ul>
           </div>
         </div>
@@ -40,18 +48,10 @@
     <div class="container">
       <div class="row">
         <div class="span9 table-bordered border-left">
-          <div class="top-title-container">
-            共检索到 2 条记录
-          </div>
-          <div class="padding10">
-            <%= yield %>
-          </div>
-          <div class="bottom-title-container">
-            共检索到 2 条记录
-          </div>
+          <%= yield %>
         </div>
 
-        <div class="span3" style="margin-left: 8px;">
+        <div class="span3 pull-right" style="margin-left: 0;">
           <div class="table-bordered border-left right-nav-container">
             <b>右侧导航栏</b>
           </div>

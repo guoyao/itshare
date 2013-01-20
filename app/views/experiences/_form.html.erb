@@ -1,26 +1,39 @@
 <%= form_for(@experience, :builder => CustomFormBuilder) do |f| %>
-  <% if @experience.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@experience.errors.count, "error") %> prohibited this experience from being saved:</h2>
+  <div class="top-title-container">
+    <%= link_to 'Home', root_path %><span class="divider">/</span><%= link_to '求职经验', experiences_path %>
+  </div>
 
-      <ul>
-      <% @experience.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+  <div class="padding10">
+    <h4><%= action_name == 'new' ? '新建帖子' : '编辑帖子' %></h4>
+    <hr/>
+    <% if @experience.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@experience.errors.count, "error") %> prohibited this experience from being saved:</h2>
+
+        <ul>
+          <% @experience.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.text_field :title, :label => '标题' %>
     </div>
-  <% end %>
+    <div class="field">
+      <%= f.text_field :company, :label => '公司名称' %>
+    </div>
+    <div class="field">
+      <%= f.text_area :details, :label => '正文' %>
+    </div>
+    <div class="field">
+      <%= f.submit '保存', :class => 'btn' %>
+      <%= link_to '取消', :back, :class => 'btn' %>
+    </div>
+  </div>
 
-  <div class="field">
-    <%= f.text_field :company %>
-  </div>
-  <div class="field">
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.text_area :details %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="bottom-title-container">
+    <%= link_to 'Home', root_path %> / <%= link_to '求职经验', experiences_path %>
   </div>
 <% end %>
