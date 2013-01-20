@@ -1,4 +1,4 @@
-<%= form_for(@experience, :builder => CustomFormBuilder) do |f| %>
+<%= form_for(@experience, builder: CustomFormBuilder, :html => {class: 'table-bordered border-left margin-bottom20'}) do |f| %>
   <div class="top-title-container">
     <%= link_to 'Home', root_path %><span class="divider">/</span><%= link_to '求职经验', experiences_path %>
   </div>
