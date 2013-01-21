@@ -1,0 +1,22 @@
+zh:
+  activerecord:
+    attributes:
+      user:
+        name: "姓名"
+        email: "电子邮箱"
+        gender: "性别"
+        password: "登录密码"
+        password_confirmation: "密码确认"
+    errors:
+      template:
+        header:
+          one:   "1 error prohibited this %{model} from being saved111"
+          other: "%{count} errors prohibited this %{model} from being saved22"
+        body:    "There were problems with the following fields33:"
+      models:
+        user:
+          attributes:
+            name:
+              blank: "is required"
+            email:
+              blank: "is required"

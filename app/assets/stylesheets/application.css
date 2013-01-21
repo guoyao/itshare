@@ -108,6 +108,12 @@ form {
   margin-bottom: 20px;
 }
 
+.required-mark {
+  color: #ff0000;
+  padding-right: 10px;
+  line-height: 27px;
+}
+
 /* scaffold styles */
 
 div.field label {
@@ -117,6 +123,7 @@ div.field label {
   text-align: right;
   display: inline-block;
   vertical-align: top;
+  cursor: default;
 }
 
 div.field textarea {

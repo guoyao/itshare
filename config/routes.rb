@@ -9,6 +9,8 @@ Itshare::Application.routes.draw do
 
   resources :comments, only: [:create, :destroy]
 
+  match '/signup', :to => 'users#new'
+
   get 'about' => 'about#index', :as => :about
 
   # The priority is based upon order of creation:

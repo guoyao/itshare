@@ -8,24 +8,14 @@
     <hr/>
     <%= render 'shared/error_messages', object: f.object %>
 
+    <%= f.text_field :email, label: '电子邮箱：', required: true %>
+    <%= f.text_field :name, label: '姓名：', required: true %>
+    <%= f.password_field :password, label: '登录密码：', required: true %>
+    <%= f.password_field :password_confirmation, label: '密码确认：', required: true %>
+    <%= f.text_field :gender, :label => '性别：' %>
+
     <div class="field">
-      <%= f.text_field :email, :label => '电子邮箱：' %>
-    </div>
-    <div class="field">
-      <%= f.text_field :name, :label => '姓名：' %>
-    </div>
-    <div class="field">
-      <%= f.text_field :password, :label => '登录密码：' %>
-    </div>
-    <div class="field">
-      <%= f.text_field :password_confirmation, :label => '密码确认：' %>
-    </div>
-    <div class="field">
-      <%= f.text_field :gender, :label => '性别：' %>
-    </div>
-    <div class="field">
-      <%= f.submit '保存', :class => 'btn' %>
-      <%= link_to '取消', :back, :class => 'btn' %>
+      <%= f.submit '提交注册信息', :class => 'btn btn-primary' %>
     </div>
   </div>
 
