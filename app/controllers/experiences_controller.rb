@@ -1,4 +1,6 @@
 class ExperiencesController < ApplicationController
+  before_filter :signed_in_user, except: [:index, :show]
+
   # GET /experiences
   # GET /experiences.json
   def index

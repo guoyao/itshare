@@ -7,7 +7,7 @@
     <h4>用户登录</h4>
     <hr/>
     <% if flash.now[:error] %>
-        <h5 class="alert-error padding10"><%= flash.now[:error] %></h5>
+      <%= render 'shared/error_messages', object: {errors: [flash.now[:error]]} %>
     <% end %>
 
     <%= f.text_field :email, label: '电子邮箱：', required: true %>

@@ -1,9 +1,19 @@
-<% if object.errors.any? %>
+<%
+   count = 0
+   if object[:errors] then
+     errors = object[:errors]
+     count = errors.count
+   else
+     errors = object.errors
+     count = errors.count
+     errors = object.errors.full_messages
+   end
+%>
+<% if count > 0 then %>
   <div id="error_explanation">
-    <h2><%= t 'activerecord.errors.title', count: object.errors.count %></h2>
-
+    <h5><%= t 'activerecord.errors.title', count: count %></h5>
     <ul>
-      <% object.errors.full_messages.each do |msg| %>
+      <% errors.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
     </ul>
