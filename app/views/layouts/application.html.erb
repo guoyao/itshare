@@ -18,6 +18,14 @@
       <div class="row">
         <div class="span9">
           <%= yield %>
+
+          <% unless signed_in? || (controller_name == 'sessions' ||
+                  (controller_name == 'users' && (action_name == 'new' || action_name == 'create'))) then %>
+            <div class="table-bordered border-left padding10 alert-error margin-top20">
+              需要 <%= link_to '登录', signin_path, class: 'btn btn-primary' %>
+              后方可发表和回复, 如果你还没有账号你可以 <%= link_to '注册', signup_path, :class => 'btn btn-primary' %> 一个帐号。
+            </div>
+          <% end %>
         </div>
 
         <div class="span3 pull-right" style="margin-left: 0;">

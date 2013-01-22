@@ -17,10 +17,14 @@ class CustomFormBuilder < ActionView::Helpers::FormBuilder
     text = label_for(method, options)
     labels = options.delete(:labels) || []
     tag_values.each_with_index do |value, index|
-      text.safe_concat(radio_button(method, value, options)).safe_concat(label(labels[index], class:"common-label"))
+      text.safe_concat(radio_button(method, value, options)).safe_concat(label(labels[index], class: "common-label"))
     end
     wrap_field(text)
   end
+
+  #def submit(value = nil, options = {})
+  #  wrap_field(super.submit(value, options))
+  #end
 
   private
 

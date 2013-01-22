@@ -23,7 +23,7 @@ class Experience < ActiveRecord::Base
 
   default_scope order: 'experiences.created_at DESC'
 
-  self.per_page = 1
+  self.per_page = 15
 
   def comments_count
     comments.count

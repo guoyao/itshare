@@ -3,20 +3,22 @@
     <div class="pull-left">
       <h4 class="inline"><%= @experience.title %></h4><br/>
     <span>
-      <%= link_to '求职经验', experiences_path %><span class="dot-divider">•</span><%= @experience.created_at_from_now %>
+      <%= link_to '求职经验', experiences_path %>
+      <span class="dot-divider">•</span>
+      <%= @experience.user.name %>
+      <span class="dot-divider">•</span>
+      <%= @experience.created_at_from_now %>
     </span>
     </div>
     <%= image_tag 'http://placehold.it/48x48', :class => 'pull-right' %>
   </div>
 
   <div class="padding10">
-    <p id="notice"><%= notice %></p>
+    <!--<p id="notice"><%#= notice %></p>-->
 
-    <p>
     <h5 style="display:<%= @experience.company.strip.empty? ? 'none' : 'block' %>;">
       @<%= @experience.company %>
     </h5>
-    </p>
 
     <p>
       <%= @experience.details %>
@@ -24,8 +26,10 @@
   </div>
 
   <div class="bottom-title-container">
-    <%= link_to '编辑', edit_experience_path(@experience) %>
-    <span class="divider">/</span>
+    <% if signed_in? && current_user?(@experience.user) then %>
+      <%= link_to '编辑', edit_experience_path(@experience) %>
+      <span class="divider">/</span>
+    <% end %>
     <%= link_to '返回', experiences_path %>
   </div>
 </div>

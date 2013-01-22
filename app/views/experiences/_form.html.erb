@@ -6,27 +6,11 @@
   <div class="padding10">
     <h4><%= action_name == 'new' ? '新建帖子' : '编辑帖子' %></h4>
     <hr/>
-    <% if @experience.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@experience.errors.count, "error") %> prohibited this experience from being saved:</h2>
+    <%= render 'shared/error_messages', object: f.object %>
 
-        <ul>
-          <% @experience.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-
-    <div class="field">
-      <%= f.text_field :title, :label => '标题' %>
-    </div>
-    <div class="field">
-      <%= f.text_field :company, :label => '公司名称' %>
-    </div>
-    <div class="field">
-      <%= f.text_area :details, :label => '正文' %>
-    </div>
+    <%= f.text_field :title, :label => '标题', required: true %>
+    <%= f.text_field :company, :label => '公司名称' %>
+    <%= f.text_area :details, :label => '正文', required: true %>
     <div class="field">
       <%= f.submit '保存', :class => 'btn' %>
       <%= link_to '取消', :back, :class => 'btn' %>

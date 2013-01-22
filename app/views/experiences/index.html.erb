@@ -1,6 +1,6 @@
 <div class="table-bordered border-left">
   <div class="top-title-container">
-    共检索到 2 条记录
+    共检索到 <%= @experiences.count %> 条记录
     <%= will_paginate %>
   </div>
 
@@ -15,18 +15,20 @@
             <span style="display:<%= experience.company.strip.empty? ? 'none' : 'inline' %>;">
               @<%= experience.company %><span class="dot-divider">•</span>
             </span>
-            <span><%= experience.created_at_from_now %></span>
+            <%= experience.user.name %>
             <span class="dot-divider">•</span>
+            <span><%= experience.created_at_from_now %></span>
             <% if experience.comments.count > 0 then %>
+              <span class="dot-divider">•</span>
               共<%= experience.comments.count %>条回复
             <% end %>
           </small>
           <br/>
           <%= truncate(experience.details, :length => 120).html_safe %>
         </p>
-        <% if signed_in? then %>
+        <% if signed_in? && current_user?(experience.user) then %>
           <div class="pull-right">
-            <%= link_to '全文', experience %>
+            <%#= link_to '全文', experience %>
             <%= link_to '编辑', edit_experience_path(experience) %>
             <%= link_to '删除', experience, method: :delete, data: {confirm: 'Are you sure?'} %>
           </div>
@@ -40,7 +42,7 @@
   </div>
 
   <div class="bottom-title-container">
-    共检索到 2 条记录
+    共检索到 <%= @experiences.count %> 条记录
     <%= will_paginate %>
   </div>
 </div>
