@@ -10,8 +10,12 @@
 
       <div class="nav-collapse collapse">
         <form class="navbar-form pull-right">
-          <%= link_to '注册', signup_path, :class => 'btn' %>
-          <%= link_to '登录', signup_path, :class => 'btn' %>
+          <% if signed_in? then %>
+            <%= link_to '退出', signout_path, method: "delete", :class => 'btn btn-primary' %>
+          <% else %>
+            <%= link_to '注册', signup_path, :class => 'btn btn-primary' %>
+            <%= link_to '登录', signin_path, :class => 'btn btn-primary' %>
+          <% end %>
         </form>
         <ul class="nav pull-right" style="margin-right: 6px;">
           <li class="<%= controller_name == 'index' ? 'active' : '' %>"><a href="/">首页</a></li>

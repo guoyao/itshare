@@ -12,7 +12,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      redirect_to @user, notice: '恭喜你，注册成功！'
+      sign_in @user
+      #flash[:success] = '恭喜你，注册成功！'
+      redirect_to root_path, notice: '恭喜你，注册成功！'
     else
       render action: "new"
     end

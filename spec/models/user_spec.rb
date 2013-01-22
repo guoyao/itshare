@@ -112,4 +112,9 @@ describe User do
       @user.reload.email.should == mixed_case_email.downcase
     end
   end
+
+  describe "remember token" do
+    before { @user.save }
+    its(:remember_token) { should_not be_blank }
+  end
 end

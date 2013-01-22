@@ -12,10 +12,10 @@
     <%= f.text_field :name, label: '姓名：', required: true %>
     <%= f.password_field :password, label: '登录密码：', required: true %>
     <%= f.password_field :password_confirmation, label: '密码确认：', required: true %>
-    <%= f.text_field :gender, :label => '性别：' %>
+    <%= f.radio_buttons :gender, [0, 1], label: "性别：", labels: ["男", "女"] %>
 
     <div class="field">
-      <%= f.submit '提交注册信息', :class => 'btn btn-primary' %>
+      <%= f.submit '注册新用户', :class => 'btn btn-primary' %>
     </div>
   </div>
 

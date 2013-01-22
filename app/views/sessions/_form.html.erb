@@ -1,0 +1,25 @@
+<%= form_for(:session, url: sessions_path, builder: CustomFormBuilder, :html => {class: 'table-bordered border-left margin-bottom20'}) do |f| %>
+  <div class="top-title-container">
+    <%= link_to 'Home', root_path %>
+  </div>
+
+  <div class="padding10">
+    <h4>用户登录</h4>
+    <hr/>
+    <% if flash.now[:error] %>
+        <h5 class="alert-error padding10"><%= flash.now[:error] %></h5>
+    <% end %>
+
+    <%= f.text_field :email, label: '电子邮箱：', required: true %>
+    <%= f.password_field :password, label: '登录密码：', required: true %>
+
+    <div class="field">
+      <%= f.submit '现在登录', :class => 'btn btn-primary' %>
+      <%= link_to '注册新用户', signup_path, :class => 'btn btn-primary' %>
+    </div>
+  </div>
+
+  <div class="bottom-title-container">
+    <%= link_to 'Home', root_path %>
+  </div>
+<% end %>

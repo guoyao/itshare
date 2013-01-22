@@ -9,7 +9,11 @@ Itshare::Application.routes.draw do
 
   resources :comments, only: [:create, :destroy]
 
-  match '/signup', :to => 'users#new'
+  resources :sessions, only: [:new, :create, :destroy]
+
+  match '/signup', to: 'users#new'
+  match '/signin', to: 'sessions#new'
+  match '/signout', to: 'sessions#destroy', via: :delete
 
   get 'about' => 'about#index', :as => :about
 
@@ -62,7 +66,7 @@ Itshare::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => "index#index"
+  root to: 'index#index'
 
   # See how all your routes lay out with "rake routes"
 
