@@ -12,10 +12,18 @@
 
 class Experience < ActiveRecord::Base
   include ApplicationHelper
-
-  has_many :comments, :dependent => :destroy
-
   attr_accessible :company, :details, :title
+
+  belongs_to :user
+  has_many :comments, dependent: :destroy
+
+  validates :title, presence: true, length: { maximum: 30 }
+  validates :details, presence: true
+  validates :user_id, presence: true
+
+  default_scope order: 'experiences.created_at DESC'
+
+  self.per_page = 1
 
   def comments_count
     comments.count

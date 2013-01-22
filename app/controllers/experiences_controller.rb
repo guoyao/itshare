@@ -4,7 +4,7 @@ class ExperiencesController < ApplicationController
   # GET /experiences
   # GET /experiences.json
   def index
-    @experiences = Experience.all
+    @experiences = Experience.paginate(page: params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

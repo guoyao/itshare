@@ -26,6 +26,7 @@ describe User do
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:authenticate) }
+  it { should respond_to(:experiences) }
 
   it { should be_valid }
 
@@ -116,5 +117,27 @@ describe User do
   describe "remember token" do
     before { @user.save }
     its(:remember_token) { should_not be_blank }
+  end
+
+  describe "experience associations" do
+    before { @user.save }
+    let!(:older_experience) do
+      FactoryGirl.create(:experience, user: @user, created_at: 1.day.ago)
+    end
+    let!(:newer_experience) do
+      FactoryGirl.create(:experience, user: @user, created_at: 1.hour.ago)
+    end
+
+    it "should have the right experiences in the right order" do
+      @user.experiences.should == [newer_experience, older_experience]
+    end
+
+    it "should destroy associated experiences" do
+      experiences = @user.experiences
+      @user.destroy
+      experiences.each do |experience|
+        Experience.find_by_id(experience.id).should be_nil
+      end
+    end
   end
 end

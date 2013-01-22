@@ -130,6 +130,14 @@ h5.alert-error {
   line-height: 27px;
 }
 
+.pagination {
+  margin: 0;
+  text-align: right;
+  margin-top: -25px;
+  padding-bottom: -10px;
+  /*border: 1px solid #ff0000;*/
+}
+
 /* scaffold styles */
 
 .form-label {
