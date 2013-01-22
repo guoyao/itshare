@@ -9,6 +9,9 @@ class UsersController < ApplicationController
   end
 
   def new
+    if signed_in? then
+      redirect_to root_path
+    end
     @user = User.new
   end
 
