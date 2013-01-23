@@ -1,20 +1,70 @@
-<p id="notice"><%= notice %></p>
+<div class="table-bordered border-left margin-bottom20">
+  <div class="top-title-container higher">
+    <div class="pull-left">
+      <h4 class="inline"><%= @job.title %></h4><br/>
+    <span>
+      <%= link_to '求职经验', jobs_path %>
+      <span class="dot-divider">•</span>
+      <%= @job.user.name %>
+      <span class="dot-divider">•</span>
+      <%= @job.created_at_from_now %>
+    </span>
+    </div>
+    <%= image_tag 'http://placehold.it/48x48', :class => 'pull-right' %>
+  </div>
 
-<p>
-  <b>Company:</b>
-  <%= @job.company %>
-</p>
+  <div class="padding10">
+    <!--<p id="notice"><%#= notice %></p>-->
 
-<p>
-  <b>Title:</b>
-  <%= @job.title %>
-</p>
+    <h5 style="display:<%= @job.company.strip.empty? ? 'none' : 'block' %>;">
+      @<%= @job.company %>
+    </h5>
 
-<p>
-  <b>Details:</b>
-  <%= @job.details %>
-</p>
+    <p>
+      <%= @job.details.html_safe %>
+    </p>
+  </div>
 
+  <div class="bottom-title-container">
+    <% if signed_in? && current_user?(@job.user) then %>
+      <%= link_to '编辑', edit_job_path(@job) %>
+      <span class="divider">/</span>
+    <% end %>
+    <%= link_to '返回', jobs_path %>
+  </div>
+</div>
 
-<%= link_to 'Edit', edit_job_path(@job) %> |
-<%= link_to 'Back', jobs_path %>
+<% if @job.job_comments.any? then %>
+  <div class="table-bordered border-left">
+    <div class="top-title-container">
+      共收到<%= @job_comments.count %>条回复
+      <%= will_paginate @job_comments %>
+    </div>
+
+    <% @job_comments.each do |job_comment| %>
+      <div class="row-fluid border-bottom" style="padding-bottom: 10px;">
+        <div class="padding10">
+          <%= image_tag 'http://placehold.it/48x48', class: 'thumbnail pull-left' %>
+          <p class="pull-left span10 article-list" style="margin-left: 10px;">
+            <%= job_comment.details.html_safe %>
+            <br/>
+            <small>
+              <span><%= job_comment.created_at_from_now %></span>
+            </small>
+          </p>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="bottom-title-container">
+      共收到<%= @job_comments.count %>条回复
+      <%= will_paginate @job_comments %>
+    </div>
+  </div>
+<% end %>
+
+<% if signed_in? then %>
+  <div class="table-bordered border-left padding10 margin-top20">
+    <%= render 'shared/comment_form', object: @job, comment: @job_comment %>
+  </div>
+<% end %>

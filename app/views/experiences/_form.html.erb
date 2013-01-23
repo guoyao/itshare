@@ -2,7 +2,7 @@
   <div class="top-title-container" style="padding: 0 10px; line-height: 40px;">
     <%= link_to 'Home', root_path %>
     <span class="divider">/</span>
-    <%= link_to '求职经验', experiences_path %>
+    <%= link_to (t "controller.#{controller_name}"), experiences_path %>
     <span class="pull-right">
       <%= f.submit '立即发表', :class => 'btn btn-primary', style: "margin-top: -5px;" %>
       <%= link_to '取消', :back, :class => 'btn', style: "margin-top: -5px;" %>
@@ -10,7 +10,7 @@
   </div>
 
   <div class="padding10">
-    <h4><%= action_name == 'new' ? '发表文章' : '编辑文章' %></h4>
+    <h4><%= @experience.new_record? ? '发表文章' : '编辑文章' %></h4>
     <hr/>
     <%= render 'shared/error_messages', object: f.object %>
 
@@ -36,7 +36,7 @@
   <div class="bottom-title-container" style="padding: 0 10px; line-height: 40px;">
     <%= link_to 'Home', root_path %>
     <span class="divider">/</span>
-    <%= link_to '求职经验', experiences_path %>
+    <%= link_to (t "controller.#{controller_name}"), experiences_path %>
     <span class="pull-right">
       <%= f.submit '立即发表', :class => 'btn btn-primary', style: "margin-top: -5px;" %>
       <%= link_to '取消', :back, :class => 'btn', style: "margin-top: -5px;" %>

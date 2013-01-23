@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 class CommentsController < ApplicationController
   def create
     @experience = Experience.find(params[:experience_id])
@@ -9,7 +7,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to experience_path(@experience)
     else
-      redirect_to experience_path(@experience), notice: '评论失败，内容不能为空！'
+      redirect_to experience_path(@experience), notice: (t 'activerecord.errors.create_comment')
     end
   end
 end

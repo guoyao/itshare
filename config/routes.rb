@@ -1,15 +1,17 @@
 Itshare::Application.routes.draw do
   resources :users
 
-  resources :jobs
+  resources :jobs do
+    resources :job_comments, only: [:create]
+  end
 
-  resources :reviews
+  resources :reviews do
+    resources :review_comments, only: [:create]
+  end
 
   resources :experiences do
     resources :comments, only: [:create]
   end
-
-  #resources :comments, only: [:create]
 
   resources :sessions, only: [:new, :create, :destroy]
 

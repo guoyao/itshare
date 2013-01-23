@@ -65,6 +65,6 @@
 
 <% if signed_in? then %>
   <div class="table-bordered border-left padding10 margin-top20">
-    <%= render 'shared/comment_form' %>
+    <%= render 'shared/comment_form', object: @experience, comment: @comment %>
   </div>
 <% end %>

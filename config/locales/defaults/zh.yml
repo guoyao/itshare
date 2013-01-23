@@ -22,8 +22,17 @@ zh:
         company: "公司名称"
         title: "标题"
         details: "正文"
+      job:
+        company: "公司名称"
+        title: "标题"
+        details: "正文"
+      review:
+        company: "公司名称"
+        title: "标题"
+        details: "正文"
     errors:
       signin: "电子邮箱或密码错误！"
+      create_comment: "评论失败，内容不能为空！"
       title: "请修正以下%{count}处错误："
       messages:
         blank: "不能为空！"

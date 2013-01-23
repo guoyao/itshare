@@ -34,8 +34,10 @@
     </div>
   <% end %>
 
-  <div class="bottom-title-container">
-    共检索到 <%= @experiences.count %> 条记录
-    <%= will_paginate @experiences%>
-  </div>
+  <% if @experiences.any? then %>
+    <div class="bottom-title-container">
+      共检索到 <%= @experiences.count %> 条记录
+      <%= will_paginate @experiences %>
+    </div>
+  <% end %>
 </div>

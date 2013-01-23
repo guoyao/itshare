@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: experiences
+#
+#  id           :integer          not null, primary key
+#  company      :string(255)
+#  title        :string(255)
+#  details      :text
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  user_id      :integer
+#  original     :integer
+#  private      :integer
+#  comment_able :integer
+#  keywords     :string(255)
+#
+
 require 'spec_helper'
 
 describe Experience do
