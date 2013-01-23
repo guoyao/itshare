@@ -8,14 +8,15 @@
     <hr/>
     <%= render 'shared/error_messages', object: f.object %>
 
-    <%= f.text_field :email, label: '电子邮箱：', required: true %>
-    <%= f.text_field :name, label: '姓名：', required: true %>
-    <%= f.password_field :password, label: '登录密码：', required: true %>
-    <%= f.password_field :password_confirmation, label: '密码确认：', required: true %>
-    <%= f.radio_buttons :gender, [0, 1], label: "性别：", labels: ["男", "女"] %>
+    <%= f.text_field :email, label: '电子邮箱：', label_class: 'form-label width100', required: true, required_mark_before_label: true %>
+    <%= f.text_field :name, label: '姓名：', label_class: 'form-label width100', required: true, required_mark_before_label: true %>
+    <%= f.password_field :password, label: '登录密码：', label_class: 'form-label width100', required: true, required_mark_before_label: true %>
+    <%= f.password_field :password_confirmation, label: '密码确认：', label_class: 'form-label width100', required: true, required_mark_before_label: true %>
+    <%= f.radio_buttons :gender, [0, 1, -1], label: "性别：", label_class: 'form-label width100', labels: ["男", "女", "保密"] %>
 
     <div class="field">
       <%= f.submit '注册新用户', :class => 'btn btn-primary' %>
+      <%= link_to '已有账户', signin_path, :class => 'btn btn-primary' %>
     </div>
   </div>
 

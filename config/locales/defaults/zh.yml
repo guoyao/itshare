@@ -1,4 +1,14 @@
 zh:
+  website:
+    title: "IT分享网"
+  controller:
+    index: "首页"
+    experiences: "求职经验"
+    reviews: "企业点评"
+    jobs: "招聘信息"
+    about: "关于IT分享网"
+    actions:
+      new: "发表新文章"
   activerecord:
     attributes:
       user:
@@ -9,7 +19,7 @@ zh:
         password_confirmation: "密码确认"
         password_digest: "登录密码"
       experience:
-        company: "公司"
+        company: "公司名称"
         title: "标题"
         details: "正文"
     errors:

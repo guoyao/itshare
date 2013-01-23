@@ -21,7 +21,7 @@
     </h5>
 
     <p>
-      <%= @experience.details %>
+      <%= @experience.details.html_safe %>
     </p>
   </div>
 
@@ -37,17 +37,34 @@
 <% if @experience.comments.any? then %>
   <div class="table-bordered border-left">
     <div class="top-title-container">
-      共收到<%= @experience.comments_count %>条回复
+      共收到<%= @comments.count %>条回复
+      <%= will_paginate @comments %>
     </div>
-    <div class="padding10">
-      middle
-    </div>
+
+    <% @comments.each do |comment| %>
+      <div class="row-fluid border-bottom" style="padding-bottom: 10px;">
+        <div class="padding10">
+          <%= image_tag 'http://placehold.it/48x48', class: 'thumbnail pull-left' %>
+          <p class="pull-left span10 article-list" style="margin-left: 10px;">
+            <%= comment.details.html_safe %>
+            <br/>
+            <small>
+              <span><%= comment.created_at_from_now %></span>
+            </small>
+          </p>
+        </div>
+      </div>
+    <% end %>
+
     <div class="bottom-title-container">
-      bottom
+      共收到<%= @comments.count %>条回复
+      <%= will_paginate @comments %>
     </div>
   </div>
 <% end %>
 
-<div class="table-bordered border-left padding10">
-  dfsdf
-</div>
+<% if signed_in? then %>
+  <div class="table-bordered border-left padding10 margin-top20">
+    <%= render 'shared/comment_form' %>
+  </div>
+<% end %>

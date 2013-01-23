@@ -10,8 +10,14 @@
 #
 
 class Comment < ActiveRecord::Base
-  belongs_to :experience
+  include ApplicationHelper
   attr_accessible :details
+  belongs_to :experience
 
-  #default scope order: 'comments.created_at DESC'
+  validates :details, presence: true
+  validates :experience_id, presence: true
+
+  default_scope order: 'comments.created_at DESC'
+
+  self.per_page = 15
 end

@@ -80,4 +80,8 @@ class JobsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def new_record_path(for_side_bar = false)
+    for_side_bar ? new_job_path : (%w(index show).include?(action_name) ? new_job_path : nil)
+  end
 end

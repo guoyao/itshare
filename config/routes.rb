@@ -5,9 +5,11 @@ Itshare::Application.routes.draw do
 
   resources :reviews
 
-  resources :experiences
+  resources :experiences do
+    resources :comments, only: [:create]
+  end
 
-  resources :comments, only: [:create, :destroy]
+  #resources :comments, only: [:create]
 
   resources :sessions, only: [:new, :create, :destroy]
 

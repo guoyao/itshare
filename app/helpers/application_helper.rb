@@ -8,6 +8,10 @@ module ApplicationHelper
     time_from_now(updated_at)
   end
 
+  def new_record_path(for_side_bar = false)
+    controller.new_record_path(for_side_bar)
+  end
+
   private
     def time_from_now(time)
       result = ""

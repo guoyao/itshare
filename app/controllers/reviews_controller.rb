@@ -80,4 +80,8 @@ class ReviewsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def new_record_path(for_side_bar = false)
+    for_side_bar ? new_review_path : (%w(index show).include?(action_name) ? new_review_path : nil)
+  end
 end

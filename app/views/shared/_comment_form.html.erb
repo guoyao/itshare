@@ -1,0 +1,12 @@
+<%= form_for([@experience, @comment], builder: CustomFormBuilder) do |f| %>
+  <% if flash[:notice] then %>
+    <p class="text-error" >
+      <%= flash[:notice] %>
+    </p>
+  <% end %>
+  <div class="field">
+    <%= f.kindeditor :details, width: '80%', height: '180px', items: f.simple_kindeditor_items %>
+  </div>
+  <%= f.submit '发表评论', :class => 'btn btn-primary' %>
+  <span class="text-warning">与内容无关的评论将被删除，严重者禁用帐号！</span>
+<% end %>

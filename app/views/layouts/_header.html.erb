@@ -6,7 +6,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-      <a class="brand" href="/">IT分享网</a>
+      <a class="brand" href="/"><%= t 'website.title' %></a>
 
       <div class="nav-collapse collapse">
         <form class="navbar-form pull-right">
@@ -18,11 +18,11 @@
           <% end %>
         </form>
         <ul class="nav pull-right" style="margin-right: 6px;">
-          <li class="<%= controller_name == 'index' ? 'active' : '' %>"><a href="/">首页</a></li>
-          <li class="<%= controller_name == 'experiences' ? 'active' : '' %>"><%= link_to '求职经验', experiences_path %></li>
-          <li class="<%= controller_name == 'reviews' ? 'active' : '' %>"><%= link_to '企业点评', reviews_path %></li>
-          <li class="<%= controller_name == 'jobs' ? 'active' : '' %>"><%= link_to '招聘信息', jobs_path %></li>
-          <li class="<%= controller_name == 'about' ? 'active' : '' %>"><%= link_to '关于IT分享网', about_path %></li>
+          <li class="<%= controller_name == 'index' ? 'active' : '' %>"><a href="/"><%= t 'controller.index' %></a></li>
+          <li class="<%= controller_name == 'experiences' ? 'active' : '' %>"><%= link_to (t 'controller.experiences'), experiences_path %></li>
+          <li class="<%= controller_name == 'reviews' ? 'active' : '' %>"><%= link_to (t 'controller.reviews'), reviews_path %></li>
+          <li class="<%= controller_name == 'jobs' ? 'active' : '' %>"><%= link_to (t 'controller.jobs'), jobs_path %></li>
+          <li class="<%= controller_name == 'about' ? 'active' : '' %>"><%= link_to (t 'controller.about'), about_path %></li>
         </ul>
       </div>
     </div>

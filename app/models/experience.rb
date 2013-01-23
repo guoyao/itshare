@@ -12,7 +12,7 @@
 
 class Experience < ActiveRecord::Base
   include ApplicationHelper
-  attr_accessible :company, :details, :title
+  attr_accessible :company, :details, :title, :keywords, :original, :private, :comment_able
 
   belongs_to :user
   has_many :comments, dependent: :destroy

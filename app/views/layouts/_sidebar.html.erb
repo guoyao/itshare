@@ -1,11 +1,13 @@
-<div class="table-bordered border-left right-nav-container">
-  <div class="top-title-container">
-    <b>资讯热度排行</b>
+<% if new_record_path(true) then %>
+  <div class="table-bordered border-left right-nav-container">
+    <div class="top-title-container">
+      <b><%= t "controller.#{controller_name}" %></b>
+    </div>
+    <div class="padding10 text-center">
+      <%= link_to (t 'controller.actions.new'), new_record_path(true), class: 'btn' %>
+    </div>
   </div>
-  <ul class="padding10">
-    <li>关于新浪</li>
-  </ul>
-</div>
+<% end %>
 <div class="table-bordered border-left right-nav-container">
   <div class="top-title-container">
     <b>企业满意度排行</b>

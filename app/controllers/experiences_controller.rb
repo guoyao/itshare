@@ -16,6 +16,9 @@ class ExperiencesController < ApplicationController
   # GET /experiences/1.json
   def show
     @experience = Experience.find(params[:id])
+    @comment = Comment.new
+
+    @comments = @experience.comments.paginate(page: params[:page])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,6 +28,9 @@ class ExperiencesController < ApplicationController
 
   def new
     @experience = Experience.new
+    @experience.original = true
+    @experience.private = false
+    @experience.comment_able = true
   end
 
   def edit
@@ -57,5 +63,9 @@ class ExperiencesController < ApplicationController
     @experience.destroy
 
     redirect_to experiences_url
+  end
+
+  def new_record_path(for_side_bar = false)
+    for_side_bar ? new_experience_path : (%w(index show).include?(action_name) ? new_experience_path : nil)
   end
 end

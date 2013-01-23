@@ -10,6 +10,10 @@ class ApplicationController < ActionController::Base
     I18n.locale = params[:locale] || I18n.default_locale
   end
 
+  def new_record_path(for_side_bar = false)
+    nil # should be override by subclass
+  end
+
   protected
 
   def signed_in_user
