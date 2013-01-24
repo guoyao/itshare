@@ -6,13 +6,13 @@
       <meta property="wb:webmaster" content="e68c32bee4b74afb"/>
     <% end %>
     <title>IT资讯分享、求职、笔试、面试经验分享，IT企业工资待遇、企业文化点评...</title>
-    <%= stylesheet_link_tag 'bootstrap', :media => 'all' %>
-    <%= stylesheet_link_tag 'bootstrap-responsive', :media => 'all' %>
-    <%= stylesheet_link_tag 'application', :media => 'all' %>
+    <%= add_cdn_path((stylesheet_link_tag 'bootstrap', :media => 'all'), 'href') %>
+    <%= add_cdn_path((stylesheet_link_tag 'bootstrap-responsive', :media => 'all'), 'href') %>
+    <%= add_cdn_path((stylesheet_link_tag 'application', :media => 'all'), 'href') %>
     <% if action_name == 'create' || action_name == 'update' then %>
-      <%= stylesheet_link_tag 'scaffolds', :media => 'all' %>
+      <%= add_cdn_path((stylesheet_link_tag 'scaffolds', :media => 'all'), 'href') %>
     <% end %>
-    <%= javascript_include_tag 'application' %>
+    <%= add_cdn_path(javascript_include_tag 'application') %>
     <%= csrf_meta_tags %>
   </head>
   <body>
@@ -44,6 +44,6 @@
       <%= render 'layouts/footer' %>
     </div>
 
-    <%= javascript_include_tag 'bootstrap' %>
+    <%= add_cdn_path(javascript_include_tag 'bootstrap') %>
   </body>
 </html>

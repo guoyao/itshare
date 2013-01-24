@@ -12,6 +12,16 @@ module ApplicationHelper
     controller.new_record_path(for_side_bar)
   end
 
+  # use cdn such qiniu to speed up website
+  def add_cdn_path(text, keyword = 'src')
+    if keyword == 'src' then
+      text = text.gsub(/src\s*=\s*["']\/*([^"']+)["']/, "src=\"#{cloud_root_path}".concat('\1').concat('"')).html_safe
+    elsif keyword == 'href' then
+      text = text.gsub(/href\s*=\s*["']\/*([^"']+)["']/, "href=\"#{cloud_root_path}".concat('\1').concat('"')).html_safe
+    end
+    text
+  end
+
   private
     def time_from_now(time)
       result = ""
@@ -27,5 +37,9 @@ module ApplicationHelper
         result = "#{(seconds / 86400).to_i}天前"
       end
       result
+    end
+
+    def cloud_root_path
+      "http://itshare.qiniudn.com/"
     end
 end
