@@ -1,27 +1,43 @@
-<h1>Listing reviews</h1>
+<div class="table-bordered border-left">
+  <div class="top-title-container">
+    共检索到 <%= @reviews.count %> 条记录
+    <%= will_paginate %>
+  </div>
 
-<table>
-  <tr>
-    <th>Company</th>
-    <th>Title</th>
-    <th>Details</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  <% @reviews.each do |review| %>
+    <div class="row-fluid border-bottom" style="padding-bottom: 10px;">
+      <div class="padding10">
+        <%= image_tag 'http://placehold.it/48x48', class: 'thumbnail pull-left' %>
+        <p class="pull-left span10 article-list" style="margin-left: 10px;">
+          <%= link_to review.title, review_path(review), class: 'title' %>
+          <br/>
+          <small>
+            <span style="display:<%= review.company.strip.empty? ? 'none' : 'inline' %>;">
+              @<%= review.company %><span class="dot-divider">•</span>
+            </span>
+            <%= review.user.name %>
+            <span class="dot-divider">•</span>
+            <span><%= review.created_at_from_now %></span>
+            <% if review.review_comments.count > 0 then %>
+              <span class="dot-divider">•</span>
+              共<%= review.review_comments.count %>条回复
+            <% end %>
+          </small>
+        </p>
+        <% if signed_in? && current_user?(review.user) then %>
+          <div class="pull-right">
+            <%= link_to '编辑', edit_review_path(review) %>
+            <%= link_to '删除', review, method: :delete, data: {confirm: 'Are you sure?'} %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 
-<% @reviews.each do |review| %>
-  <tr>
-    <td><%= review.company %></td>
-    <td><%= review.title %></td>
-    <td><%= review.details %></td>
-    <td><%= link_to 'Show', review %></td>
-    <td><%= link_to 'Edit', edit_review_path(review) %></td>
-    <td><%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Review', new_review_path %>
+  <% if @reviews.any? then %>
+    <div class="bottom-title-container">
+      共检索到 <%= @reviews.count %> 条记录
+      <%= will_paginate %>
+    </div>
+  <% end %>
+</div>

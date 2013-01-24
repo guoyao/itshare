@@ -190,6 +190,16 @@ div.field {
   margin-bottom: 10px;
 }
 
+div.field textarea {
+  width: 79%;
+  height: 400px;
+}
+
+div.simple-kindeditor textarea {
+  width: 80%;
+  height: 180px;
+}
+
 div.field .text-success {
   margin-left: 10px;
 }

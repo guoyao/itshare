@@ -42,7 +42,7 @@ class ExperiencesController < ApplicationController
     @experience.user = current_user
 
     if @experience.save
-      redirect_to @experience, notice: 'Experience was successfully created.'
+      redirect_to @experience
     else
       render action: "new"
     end
@@ -52,7 +52,7 @@ class ExperiencesController < ApplicationController
     @experience = Experience.find(params[:id])
 
     if @experience.update_attributes(params[:experience])
-      redirect_to @experience, notice: 'Experience was successfully updated.'
+      redirect_to @experience
     else
       render action: "edit"
     end

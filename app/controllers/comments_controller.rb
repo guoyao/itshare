@@ -5,9 +5,9 @@ class CommentsController < ApplicationController
     @comment.experience = @experience
 
     if @comment.save
-      redirect_to experience_path(@experience)
+      redirect_to @experience
     else
-      redirect_to experience_path(@experience), notice: (t 'activerecord.errors.create_comment')
+      redirect_to @experience, notice: (t 'activerecord.errors.create_comment')
     end
   end
 end

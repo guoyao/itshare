@@ -3,7 +3,7 @@
     <div class="pull-left">
       <h4 class="inline"><%= @job.title %></h4><br/>
     <span>
-      <%= link_to '求职经验', jobs_path %>
+      <%= link_to (t "controller.#{controller_name}"), jobs_path %>
       <span class="dot-divider">•</span>
       <%= @job.user.name %>
       <span class="dot-divider">•</span>

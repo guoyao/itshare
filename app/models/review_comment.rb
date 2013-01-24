@@ -9,6 +9,15 @@
 #  updated_at :datetime         not null
 #
 
-class ReviewComments < ActiveRecord::Base
-  attr_accessible :details, :review_id
+class ReviewComment < ActiveRecord::Base
+  include ApplicationHelper
+  attr_accessible :details
+  belongs_to :review
+
+  validates :details, presence: true
+  validates :review_id, presence: true
+
+  default_scope order: 'review_comments.created_at DESC'
+
+  self.per_page = 15
 end

@@ -42,7 +42,7 @@ class JobsController < ApplicationController
     @job.user = current_user
 
     if @job.save
-      redirect_to @job, notice: 'Job was successfully created.'
+      redirect_to @job
     else
       render action: "new"
     end
@@ -52,7 +52,7 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])
 
     if @job.update_attributes(params[:job])
-      redirect_to @job, notice: 'Job was successfully updated.'
+      redirect_to @job
     else
       render action: "edit"
     end

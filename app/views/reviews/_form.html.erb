@@ -1,29 +1,45 @@
-<%= form_for(@review) do |f| %>
-  <% if @review.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
+<%= form_for(@review, builder: CustomFormBuilder, :html => {class: 'table-bordered border-left margin-bottom20'}) do |f| %>
+  <div class="top-title-container" style="padding: 0 10px; line-height: 40px;">
+    <%= link_to 'Home', root_path %>
+    <span class="divider">/</span>
+    <%= link_to (t "controller.#{controller_name}"), reviews_path %>
+    <span class="pull-right">
+      <%= f.submit '立即发表', :class => 'btn btn-primary', style: "margin-top: -5px;" %>
+      <%= link_to '取消', :back, :class => 'btn', style: "margin-top: -5px;" %>
+    </span>
+  </div>
 
-      <ul>
-      <% @review.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+  <div class="padding10">
+    <h4><%= @review.new_record? ? '发表文章' : '编辑文章' %></h4>
+    <hr/>
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <%= f.text_field :title, required: true, label_class: 'v-form-label' %>
+    <%= f.text_field :company, label_class: 'v-from-label' %>
+    <div class="field">
+      <span style="float: left;height: 20px;">
+        <%= f.label_for :details, required: true, label_class: 'v-form-label' %>
+      </span>
+      <div class="text-success" style="margin-left:60px;margin-bottom: 5px;">
+        {回车产生&lt;p&gt;, Shift+Enter产生&lt;br/&gt;}
+      </div>
+      <%= f.kindeditor :details, width: '79%', height: '450px', items: f.default_kindeditor_items %>
     </div>
-  <% end %>
+    <%= f.text_field :keywords, label: '好的关键字可以让别人更容易找到此篇文章', style:'width: 350px',
+                     label_class: 'v-form-label margin-top25', field_tip: '多个关键字用半角逗号隔开，最多5个' %>
+    <%= f.radio_buttons :original, [1, 0], label: "文章类型：", label_class: 'form-label text-bold', labels: ["原创", "转帖"] %>
+    <%= f.radio_buttons :private, [0, 1], label: "隐私设置：", label_class: 'form-label text-bold',
+                        labels: ["所有人可见", "保密（只有本人可见）"], field_tip: '设置为保密的文章，标题对任何人是可见的' %>
+    <%= f.radio_buttons :comment_able, [1, 0], label: "评论设置：", label_class: 'form-label text-bold', labels: ["允许评论", "禁止评论"] %>
+  </div>
 
-  <div class="field">
-    <%= f.label :company %><br />
-    <%= f.text_field :company %>
-  </div>
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :details %><br />
-    <%= f.text_area :details %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="bottom-title-container" style="padding: 0 10px; line-height: 40px;">
+    <%= link_to 'Home', root_path %>
+    <span class="divider">/</span>
+    <%= link_to (t "controller.#{controller_name}"), reviews_path %>
+    <span class="pull-right">
+      <%= f.submit '立即发表', :class => 'btn btn-primary', style: "margin-top: -5px;" %>
+      <%= link_to '取消', :back, :class => 'btn', style: "margin-top: -5px;" %>
+    </span>
   </div>
 <% end %>

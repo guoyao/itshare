@@ -4,7 +4,7 @@
       <%= flash[:notice] %>
     </p>
   <% end %>
-  <div class="field">
+  <div class="field simple-kindeditor">
     <%= f.kindeditor :details, width: '80%', height: '180px', items: f.simple_kindeditor_items %>
   </div>
   <%= f.submit '发表评论', :class => 'btn btn-primary' %>
