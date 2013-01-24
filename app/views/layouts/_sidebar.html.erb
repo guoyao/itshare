@@ -1,5 +1,5 @@
-<% if new_record_path(true) then %>
-  <div class="table-bordered border-left right-nav-container">
+<% if signed_in? && new_record_path(true) then %>
+  <div class="table-bordered border-left right-nav-container" style="color: #666666;">
     <div class="top-title-container">
       <b><%= t "controller.#{controller_name}" %></b>
     </div>
@@ -8,16 +8,45 @@
     </div>
   </div>
 <% end %>
-<div class="table-bordered border-left right-nav-container">
+
+<div class="table-bordered border-left right-nav-container" style="color: #666666;">
   <div class="top-title-container">
-    <b>企业满意度排行</b>
+    <strong><%= t 'controller.experiences' %> - 文章排行</strong>
   </div>
-  <ul class="padding10">
-    <li>新浪</li>
+  <ul class="article-list ranking-list">
+    <% @ranking_experiences.each do |experience| %>
+      <li>
+        <%= link_to truncate(experience.title, length: 15), experience_path(experience) %>
+        <span class="pull-right padding-right10 text-article-info"><%= experience.pageview %></span>
+      </li>
+    <% end %>
   </ul>
 </div>
-<div class="table-bordered border-left right-nav-container">
+
+<div class="table-bordered border-left right-nav-container" style="color: #666666;">
   <div class="top-title-container">
-    <b>标签云</b>
+    <strong><%= t 'controller.reviews' %> - 文章排行</strong>
   </div>
+  <ul class="article-list ranking-list">
+    <% @ranking_reviews.each do |review| %>
+      <li>
+        <%= link_to truncate(review.title, length: 15), review_path(review) %>
+        <span class="pull-right padding-right10 text-article-info"><%= review.pageview %></span>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<div class="table-bordered border-left right-nav-container" style="color: #666666;">
+  <div class="top-title-container">
+    <strong><%= t 'controller.jobs' %> - 文章排行</strong>
+  </div>
+  <ul class="article-list ranking-list">
+    <% @ranking_jobs.each do |job| %>
+      <li>
+        <%= link_to truncate(job.title, length: 15), job_path(job) %>
+        <span class="pull-right padding-right10 text-article-info"><%= job.pageview %></span>
+      </li>
+    <% end %>
+  </ul>
 </div>

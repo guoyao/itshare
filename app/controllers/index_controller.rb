@@ -1,8 +1,8 @@
 class IndexController < ApplicationController
   def index
-    @experiences = Experience.limit(10)
-    @jobs = Job.limit(10)
-    @reviews = Review.limit(10)
+    @experiences = Experience.recent_articles
+    @jobs = Job.recent_articles
+    @reviews = Review.recent_articles
 
     respond_to do |format|
       format.html # index.html.erb

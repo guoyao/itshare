@@ -21,6 +21,10 @@ form, ul {
   margin: 0;
 }
 
+ul {
+  margin-left: 20px;
+}
+
 label {
   cursor: default;
 }
@@ -167,6 +171,10 @@ ul.article-list {
   margin-top: 2px;
   margin-bottom: 2px;
   list-style-type: circle;
+}
+
+ul.ranking-list {
+  list-style-type: decimal;
 }
 
 ul.article-list li {

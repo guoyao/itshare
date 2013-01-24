@@ -4,10 +4,16 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   include SessionsHelper
 
-  before_filter :set_locale
+  before_filter :set_locale, :ranking_articles
 
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
+  end
+
+  def ranking_articles
+    @ranking_experiences = Experience.ranking_articles
+    @ranking_reviews = Review.ranking_articles
+    @ranking_jobs = Job.ranking_articles
   end
 
   def new_record_path(for_side_bar = false)

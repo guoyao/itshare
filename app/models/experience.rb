@@ -22,15 +22,22 @@ class Experience < ActiveRecord::Base
   belongs_to :user
   has_many :comments, dependent: :destroy
 
-  validates :title, presence: true, length: { maximum: 30 }
+  validates :title, presence: true, length: { maximum: 24 }
   validates :details, presence: true
   validates :user_id, presence: true
 
-  default_scope order: 'experiences.created_at DESC'
+  default_scope order: 'created_at DESC'
+
+  scope :rankings, order: 'pageview DESC'
 
   self.per_page = 15
 
-  def comments_count
-    comments.count
+  def self.recent_articles(count = 15)
+    Experience.limit(count)
   end
+
+  def self.ranking_articles(count = 8)
+    Experience.unscoped.rankings.limit(count)
+  end
+
 end

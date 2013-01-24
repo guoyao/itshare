@@ -9,7 +9,8 @@
     <ul class="article-list">
       <% @experiences.each do |experience| %>
         <li>
-          <%= link_to experience.title, experience_path(experience) %>
+          <%= link_to truncate(experience.title, length: 24), experience_path(experience) %>
+          <span class="pull-right padding-right10 text-article-info"><%= experience.created_at.strftime('%m/%d') %></span>
         </li>
       <% end %>
     </ul>

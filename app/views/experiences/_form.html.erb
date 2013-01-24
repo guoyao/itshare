@@ -14,7 +14,7 @@
     <hr/>
     <%= render 'shared/error_messages', object: f.object %>
 
-    <%= f.text_field :title, required: true, label_class: 'v-form-label' %>
+    <%= f.text_field :title, required: true, label_class: 'v-form-label', field_tip: '最多24个字符' %>
     <%= f.text_field :company, label_class: 'v-from-label' %>
     <div class="field">
       <span style="float: left;height: 20px;">

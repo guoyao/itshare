@@ -26,8 +26,12 @@
     background-color: #f2dede;
     border-color: #eed3d7;
   }
-  ul li {
-    font-size: 0.9em;
-    list-style: square;
+  ul {
+    margin-left: 20px;
+    margin-bottom: 5px;
+    li {
+      font-size: 13px;
+      list-style: square;
+    }
   }
 }

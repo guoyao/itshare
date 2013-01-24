@@ -22,11 +22,21 @@ class Review < ActiveRecord::Base
   belongs_to :user
   has_many :review_comments, dependent: :destroy
 
-  validates :title, presence: true, length: { maximum: 30 }
+  validates :title, presence: true, length: { maximum: 24 }
   validates :details, presence: true
   validates :user_id, presence: true
 
-  default_scope order: 'reviews.created_at DESC'
+  default_scope order: 'created_at DESC'
+
+  scope :rankings, order: 'pageview DESC'
 
   self.per_page = 15
+
+  def self.recent_articles(count = 15)
+    Review.limit(count)
+  end
+
+  def self.ranking_articles(count = 8)
+    Review.unscoped.rankings.limit(count)
+  end
 end
