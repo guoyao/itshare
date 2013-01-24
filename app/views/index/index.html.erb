@@ -1,43 +1,50 @@
-<div class="table-bordered border-left">
-  <div class="top-title-container">
-    共检索到 <%= @experiences.count %> 条记录
-    <%= will_paginate @experiences %>
+<div class="row-fluid">
+
+  <div class="table-bordered border-left span6">
+    <div class="top-title-container">
+      <strong class="title">
+        <%= link_to (t 'controller.experiences'), experiences_path %>
+      </strong>
+    </div>
+    <ul class="article-list">
+      <% @experiences.each do |experience| %>
+        <li>
+          <%= link_to experience.title, experience_path(experience) %>
+        </li>
+      <% end %>
+    </ul>
   </div>
 
-  <% @experiences.each do |experience| %>
-    <div class="row-fluid border-bottom" style="padding-bottom: 10px;">
-      <div class="padding10">
-        <%= image_tag 'http://placehold.it/48x48', :class => 'thumbnail pull-left' %>
-        <p class="pull-left span9" style="margin-left: 10px;">
-          <%= link_to experience.title, experience_path(experience) %>
-          <br/>
-          <small>
-            <span style="display:<%= experience.company.strip.empty? ? 'none' : 'inline' %>;">
-              @<%= experience.company %><span class="dot-divider">•</span>
-            </span>
-            <%= experience.user.name %>
-            <span class="dot-divider">•</span>
-            <span><%= experience.created_at_from_now %></span>
-            <% if experience.comments.count > 0 then %>
-              <span class="dot-divider">•</span>
-              共<%= experience.comments.count %>条回复
-            <% end %>
-          </small>
-        </p>
-        <% if signed_in? && current_user?(experience.user) then %>
-          <div class="pull-right">
-            <%= link_to '编辑', edit_experience_path(experience) %>
-            <%= link_to '删除', experience, method: :delete, data: {confirm: 'Are you sure?'} %>
-          </div>
-        <% end %>
-      </div>
+  <div class="table-bordered border-left span6">
+    <div class="top-title-container">
+      <strong class="title">
+        <%= link_to (t 'controller.reviews'), reviews_path %>
+      </strong>
     </div>
-  <% end %>
+    <ul class="article-list">
+      <% @reviews.each do |review| %>
+        <li>
+          <%= link_to review.title, review_path(review) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 
-  <% if @experiences.any? then %>
-    <div class="bottom-title-container">
-      共检索到 <%= @experiences.count %> 条记录
-      <%= will_paginate @experiences %>
-    </div>
-  <% end %>
 </div>
+
+<div class="table-bordered border-left margin-top20">
+  <div class="top-title-container">
+    <strong class="title">
+      <%= link_to (t 'controller.jobs'), jobs_path %>
+    </strong>
+  </div>
+  <ul class="article-list">
+    <% @jobs.each do |job| %>
+      <li>
+        <%= link_to job.title, job_path(job) %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+

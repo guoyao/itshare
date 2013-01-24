@@ -17,12 +17,17 @@ body {
   color: #333;
 }
 
-form {
+form, ul {
   margin: 0;
 }
 
 label {
   cursor: default;
+}
+
+.text-article-info {
+  color: #999999;
+  font-size: 12px;
 }
 
 .text-center {
@@ -31,6 +36,10 @@ label {
 
 .text-bold {
   font-weight: bold;
+}
+
+.word-wrap {
+  word-wrap: break-word;
 }
 
 .vertical-align-top {
@@ -88,6 +97,11 @@ label {
   line-height: 25px;
 }
 
+.top-title-container .title a {
+  color: #888888;
+  text-decoration: none;
+}
+
 .bottom-title-container {
   padding: 10px;
   margin: 0;
@@ -139,13 +153,24 @@ h5.alert-error {
   margin-bottom: 20px;
 }
 
-p.article-list {
+.article-list {
   margin-left: 10px;
   margin-top: 8px;
 }
 
 p.article-list .title {
   font-size: 15px;
+}
+
+ul.article-list {
+  margin-left: 26px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  list-style-type: circle;
+}
+
+ul.article-list li {
+  margin-top: 2px;
 }
 
 .required-mark {

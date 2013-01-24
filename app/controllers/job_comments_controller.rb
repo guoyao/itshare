@@ -3,6 +3,7 @@ class JobCommentsController < ApplicationController
     @job = Job.find(params[:job_id])
     @job_comment = JobComment.new(params[:job_comment])
     @job_comment.job = @job
+    @job_comment.user = current_user
 
     if @job_comment.save
       redirect_to job_path(@job)

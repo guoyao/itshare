@@ -17,7 +17,7 @@
 
 class Review < ActiveRecord::Base
   include ApplicationHelper
-  attr_accessible :company, :details, :title, :keywords, :original, :private, :comment_able
+  attr_accessible :company, :details, :title, :keywords, :original, :private, :comment_able, :pageview
 
   belongs_to :user
   has_many :review_comments, dependent: :destroy

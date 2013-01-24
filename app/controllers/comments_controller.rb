@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
     @experience = Experience.find(params[:experience_id])
     @comment = Comment.new(params[:comment])
     @comment.experience = @experience
+    @comment.user = current_user
 
     if @comment.save
       redirect_to @experience

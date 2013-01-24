@@ -17,6 +17,9 @@ class User < ActiveRecord::Base
   attr_accessible :email, :gender, :name, :password, :password_confirmation
   has_secure_password
   has_many :experiences, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :job_comments, dependent: :destroy
+  has_many :review_comments, dependent: :destroy
 
 
   before_save { self.email.downcase! }

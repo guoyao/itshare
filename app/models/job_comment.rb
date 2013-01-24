@@ -13,9 +13,11 @@ class JobComment < ActiveRecord::Base
   include ApplicationHelper
   attr_accessible :details
   belongs_to :job
+  belongs_to :user
 
   validates :details, presence: true
   validates :job_id, presence: true
+  validates :user_id, presence: true
 
   default_scope order: 'job_comments.created_at DESC'
 

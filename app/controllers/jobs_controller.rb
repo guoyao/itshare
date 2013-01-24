@@ -16,6 +16,10 @@ class JobsController < ApplicationController
   # GET /jobs/1.json
   def show
     @job = Job.find(params[:id])
+    unless flash[:just_created_or_updated]
+      @job.pageview += 1
+      @job.save
+    end
     @job_comment = JobComment.new
 
     @job_comments = @job.job_comments.paginate(page: params[:page])
@@ -42,6 +46,7 @@ class JobsController < ApplicationController
     @job.user = current_user
 
     if @job.save
+      flash[:just_created_or_updated] = true
       redirect_to @job
     else
       render action: "new"
@@ -52,6 +57,7 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])
 
     if @job.update_attributes(params[:job])
+      flash[:just_created_or_updated] = true
       redirect_to @job
     else
       render action: "edit"

@@ -16,6 +16,10 @@ class ExperiencesController < ApplicationController
   # GET /experiences/1.json
   def show
     @experience = Experience.find(params[:id])
+    unless flash[:just_created_or_updated]
+      @experience.pageview += 1
+      @experience.save
+    end
     @comment = Comment.new
 
     @comments = @experience.comments.paginate(page: params[:page])
@@ -42,6 +46,7 @@ class ExperiencesController < ApplicationController
     @experience.user = current_user
 
     if @experience.save
+      flash[:just_created_or_updated] = true
       redirect_to @experience
     else
       render action: "new"
@@ -52,6 +57,7 @@ class ExperiencesController < ApplicationController
     @experience = Experience.find(params[:id])
 
     if @experience.update_attributes(params[:experience])
+      flash[:just_created_or_updated] = true
       redirect_to @experience
     else
       render action: "edit"

@@ -16,6 +16,10 @@ class ReviewsController < ApplicationController
   # GET /reviews/1.json
   def show
     @review = Review.find(params[:id])
+    unless flash[:just_created_or_updated]
+      @review.pageview += 1
+      @review.save
+    end
     @review_comment = ReviewComment.new
 
     @review_comments = @review.review_comments.paginate(page: params[:page])
@@ -42,6 +46,7 @@ class ReviewsController < ApplicationController
     @review.user = current_user
 
     if @review.save
+      flash[:just_created_or_updated] = true
       redirect_to @review
     else
       render action: "new"
@@ -52,6 +57,7 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
 
     if @review.update_attributes(params[:review])
+      flash[:just_created_or_updated] = true
       redirect_to @review
     else
       render action: "edit"

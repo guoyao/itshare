@@ -2,13 +2,19 @@
   <div class="top-title-container higher">
     <div class="pull-left">
       <h4 class="inline"><%= @review.title %></h4><br/>
-    <span>
-      <%= link_to (t "controller.#{controller_name}"), reviews_path %>
-      <span class="dot-divider">•</span>
-      <%= @review.user.name %>
-      <span class="dot-divider">•</span>
-      <%= @review.created_at_from_now %>
-    </span>
+      <span class="text-article-info">
+        <%= link_to (t "controller.#{controller_name}"), reviews_path %>
+        <span class="dot-divider">•</span>
+        <%= @review.user.name %>
+        <span class="dot-divider">•</span>
+        于<%= @review.created_at_from_now %>发布
+        <% if @review_comments.any? then %>
+            <span class="dot-divider">•</span>
+            最后由 <%= @review_comments.last.user.name %> 于<%= @review_comments.last.created_at_from_now %>回复
+          <% end %>
+        <span class="dot-divider">•</span>
+        <%= @review.pageview %>次阅读
+      </span>
     </div>
     <%= image_tag 'http://placehold.it/48x48', :class => 'pull-right' %>
   </div>
@@ -36,7 +42,7 @@
 
 <% if @review.review_comments.any? then %>
   <div class="table-bordered border-left">
-    <div class="top-title-container">
+    <div class="top-title-container text-article-info">
       共收到<%= @review_comments.count %>条回复
       <%= will_paginate @review_comments %>
     </div>
@@ -44,19 +50,25 @@
     <% @review_comments.each do |review_comment| %>
       <div class="row-fluid border-bottom" style="padding-bottom: 10px;">
         <div class="padding10">
-          <%= image_tag 'http://placehold.it/48x48', class: 'thumbnail pull-left' %>
-          <p class="pull-left span10 article-list" style="margin-left: 10px;">
-            <%= review_comment.details.html_safe %>
-            <br/>
+          <div class="pull-left">
+            <%= image_tag 'http://placehold.it/48x48', class: 'thumbnail' %>
+          </div>
+          <div class="span10 article-list word-wrap" style="margin-left: 10px;">
             <small>
-              <span><%= review_comment.created_at_from_now %></span>
+              <span class="text-article-info">
+                <%= review_comment.user.name %>
+                <span class="dot-divider">•</span>
+                <%= review_comment.created_at_from_now %>
+              </span>
             </small>
-          </p>
+            <br />
+            <%= review_comment.details.html_safe %>
+          </div>
         </div>
       </div>
     <% end %>
 
-    <div class="bottom-title-container">
+    <div class="bottom-title-container text-article-info">
       共收到<%= @review_comments.count %>条回复
       <%= will_paginate @review_comments %>
     </div>

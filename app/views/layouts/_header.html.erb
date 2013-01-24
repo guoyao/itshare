@@ -22,7 +22,7 @@
           <li class="<%= controller_name == 'experiences' ? 'active' : '' %>"><%= link_to (t 'controller.experiences'), experiences_path %></li>
           <li class="<%= controller_name == 'reviews' ? 'active' : '' %>"><%= link_to (t 'controller.reviews'), reviews_path %></li>
           <li class="<%= controller_name == 'jobs' ? 'active' : '' %>"><%= link_to (t 'controller.jobs'), jobs_path %></li>
-          <li class="<%= controller_name == 'about' ? 'active' : '' %>"><%= link_to (t 'controller.about'), about_path %></li>
+          <li class="<%= controller_name == 'about' ? 'active' : '' %>"><a href="/about"><%= t 'controller.about'%></a>
         </ul>
       </div>
     </div>

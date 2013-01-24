@@ -1,4 +1,12 @@
 zh:
+  common:
+    edit_btn_label: "编辑"
+    delete_btn_label: "删除"
+    alert:
+      delete: "确定删除？"
+  will_paginate:
+    previous_label: "<"
+    next_label: ">"
   website:
     title: "IT分享网"
   controller:

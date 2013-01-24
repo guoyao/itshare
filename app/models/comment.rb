@@ -13,9 +13,11 @@ class Comment < ActiveRecord::Base
   include ApplicationHelper
   attr_accessible :details
   belongs_to :experience
+  belongs_to :user
 
   validates :details, presence: true
   validates :experience_id, presence: true
+  validates :user_id, presence: true
 
   default_scope order: 'comments.created_at DESC'
 

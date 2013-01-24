@@ -2,13 +2,19 @@
   <div class="top-title-container higher">
     <div class="pull-left">
       <h4 class="inline"><%= @job.title %></h4><br/>
-    <span>
-      <%= link_to (t "controller.#{controller_name}"), jobs_path %>
-      <span class="dot-divider">•</span>
-      <%= @job.user.name %>
-      <span class="dot-divider">•</span>
-      <%= @job.created_at_from_now %>
-    </span>
+      <span class="text-article-info">
+        <%= link_to (t "controller.#{controller_name}"), jobs_path %>
+        <span class="dot-divider">•</span>
+        <%= @job.user.name %>
+        <span class="dot-divider">•</span>
+        于<%= @job.created_at_from_now %>发布
+        <% if @job_comments.any? then %>
+            <span class="dot-divider">•</span>
+            最后由 <%= @job_comments.last.user.name %> 于<%= @job_comments.last.created_at_from_now %>回复
+          <% end %>
+        <span class="dot-divider">•</span>
+        <%= @job.pageview %>次阅读
+      </span>
     </div>
     <%= image_tag 'http://placehold.it/48x48', :class => 'pull-right' %>
   </div>
@@ -36,7 +42,7 @@
 
 <% if @job.job_comments.any? then %>
   <div class="table-bordered border-left">
-    <div class="top-title-container">
+    <div class="top-title-container text-article-info">
       共收到<%= @job_comments.count %>条回复
       <%= will_paginate @job_comments %>
     </div>
@@ -44,19 +50,25 @@
     <% @job_comments.each do |job_comment| %>
       <div class="row-fluid border-bottom" style="padding-bottom: 10px;">
         <div class="padding10">
-          <%= image_tag 'http://placehold.it/48x48', class: 'thumbnail pull-left' %>
-          <p class="pull-left span10 article-list" style="margin-left: 10px;">
-            <%= job_comment.details.html_safe %>
-            <br/>
+          <div class="pull-left">
+            <%= image_tag 'http://placehold.it/48x48', class: 'thumbnail' %>
+          </div>
+          <div class="span10 article-list word-wrap" style="margin-left: 10px;">
             <small>
-              <span><%= job_comment.created_at_from_now %></span>
+              <span class="text-article-info">
+                <%= job_comment.user.name %>
+                <span class="dot-divider">•</span>
+                <%= job_comment.created_at_from_now %>
+              </span>
             </small>
-          </p>
+            <br />
+            <%= job_comment.details.html_safe %>
+          </div>
         </div>
       </div>
     <% end %>
 
-    <div class="bottom-title-container">
+    <div class="bottom-title-container text-article-info">
       共收到<%= @job_comments.count %>条回复
       <%= will_paginate @job_comments %>
     </div>
