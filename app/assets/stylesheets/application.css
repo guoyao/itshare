@@ -181,6 +181,11 @@ ul.article-list li {
   margin-top: 2px;
 }
 
+img.portrait {
+  width: 48px;
+  height: 48px;
+}
+
 .required-mark {
   color: #ff0000;
   padding-right: 10px;
