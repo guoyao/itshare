@@ -27,7 +27,11 @@
     </h5>
 
     <p>
-      <%= @experience.details.html_safe %>
+      <%= if @experience.details_available?(current_user?(@experience.user)) then  %>
+        <%= @experience.details.html_safe %>
+      <% else %>
+        <span class="text-warning">提示：该文章被发表人设置为私有</span>
+      <% end %>
     </p>
   </div>
 

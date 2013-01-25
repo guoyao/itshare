@@ -2,9 +2,8 @@
 <html>
   <head>
     <meta charset="utf-8"/>
-    <% if controller_name == 'index' then %>
-      <meta property="wb:webmaster" content="e68c32bee4b74afb"/>
-    <% end %>
+    <!-- for sina weibo authentication -->
+    <meta property="wb:webmaster" content="e68c32bee4b74afb"/>
     <title>IT资讯分享、求职、笔试、面试经验分享，IT企业工资待遇、企业文化点评...</title>
     <%= add_cdn_path((stylesheet_link_tag 'bootstrap', :media => 'all'), 'href') %>
     <%= add_cdn_path((stylesheet_link_tag 'bootstrap-responsive', :media => 'all'), 'href') %>
@@ -31,7 +30,7 @@
             </div>
           <% elsif new_record_path %>
             <div class="table-bordered border-left padding10 alert-error margin-top20">
-              <%= link_to '发表新文章', new_record_path, class: 'btn btn-primary' %>
+              <%= link_to (t 'controller.actions.new'), new_record_path, class: 'btn btn-primary' %>
             </div>
           <% end %>
         </div>

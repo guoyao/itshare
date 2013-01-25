@@ -16,7 +16,7 @@
 #
 
 class Experience < ActiveRecord::Base
-  include ApplicationHelper
+  include Aggregation
   attr_accessible :company, :details, :title, :keywords, :original, :private, :comment_able, :pageview
 
   belongs_to :user

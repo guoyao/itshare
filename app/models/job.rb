@@ -16,7 +16,7 @@
 #
 
 class Job < ActiveRecord::Base
-  include ApplicationHelper
+  include Aggregation
   attr_accessible :company, :details, :title, :keywords, :original, :private, :comment_able, :pageview
 
   belongs_to :user
@@ -39,4 +39,5 @@ class Job < ActiveRecord::Base
   def self.ranking_articles(count = 8)
     Job.unscoped.rankings.limit(count)
   end
+
 end

@@ -10,7 +10,7 @@
       <% @experiences.each do |experience| %>
         <li>
           <%= link_to truncate(experience.title, length: 24), experience_path(experience) %>
-          <span class="pull-right padding-right10 text-article-info"><%= experience.created_at.strftime('%m/%d') %></span>
+          <span class="pull-right padding-right10 text-article-info"><%= experience.created_at_string('%m/%d') %></span>
         </li>
       <% end %>
     </ul>
@@ -25,7 +25,8 @@
     <ul class="article-list">
       <% @reviews.each do |review| %>
         <li>
-          <%= link_to review.title, review_path(review) %>
+          <%= link_to truncate(review.title, length: 24), review_path(review) %>
+          <span class="pull-right padding-right10 text-article-info"><%= review.created_at_string('%m/%d') %></span>
         </li>
       <% end %>
     </ul>
@@ -43,6 +44,16 @@
     <% @jobs.each do |job| %>
       <li>
         <%= link_to job.title, job_path(job) %>
+        <span class="text-article-info padding-left10">
+          <% if job.job_comments.any? %>
+            <%= job.job_comments.last.created_at_from_now %> By <%= job.job_comments.last.user.name %>
+          <% else %>
+            <%= job.created_at_from_now %> By <%= job.user.name %>
+          <% end %>
+        </span>
+        <span class="pull-right padding-right10 text-article-info">
+          <%= job.job_comments.count %>回/<%= job.pageview %>阅
+        </span>
       </li>
     <% end %>
   </ul>

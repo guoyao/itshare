@@ -9,8 +9,8 @@
     <%= render 'shared/error_messages', object: f.object %>
 
     <%= f.text_field :email, label: '电子邮箱：', label_class: 'form-label width100', required: true, required_mark_before_label: true %>
-    <%= f.text_field :name, label: '姓名：', label_class: 'form-label width100', required: true, required_mark_before_label: true %>
-    <%= f.password_field :password, label: '登录密码：', label_class: 'form-label width100', required: true, required_mark_before_label: true %>
+    <%= f.text_field :name, label: '姓名：', label_class: 'form-label width100', required: true, required_mark_before_label: true, field_tip: '至多12个字符' %>
+    <%= f.password_field :password, label: '登录密码：', label_class: 'form-label width100', required: true, required_mark_before_label: true, field_tip: '至少6个字符' %>
     <%= f.password_field :password_confirmation, label: '密码确认：', label_class: 'form-label width100', required: true, required_mark_before_label: true %>
     <%= f.radio_buttons :gender, [0, 1, -1], label: "性别：", label_class: 'form-label width100', labels: ["男", "女", "保密"] %>
 
