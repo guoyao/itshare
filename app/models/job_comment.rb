@@ -10,7 +10,7 @@
 #
 
 class JobComment < ActiveRecord::Base
-  include ApplicationHelper
+  include Aggregation
   attr_accessible :details
   belongs_to :job
   belongs_to :user

@@ -1,12 +1,16 @@
-<%= form_for([object, comment], builder: CustomFormBuilder) do |f| %>
-  <% if flash[:notice] then %>
-    <p class="text-error" >
-      <%= flash[:notice] %>
-    </p>
+<% if object.comment_able? then %>
+  <%= form_for([object, comment], builder: CustomFormBuilder) do |f| %>
+    <% if flash[:notice] then %>
+      <p class="text-error" >
+        <%= flash[:notice] %>
+      </p>
+    <% end %>
+    <div class="field simple-kindeditor">
+      <%= f.kindeditor :details, width: '80%', height: '180px', items: f.simple_kindeditor_items %>
+    </div>
+    <%= f.submit '发表评论', :class => 'btn btn-primary' %>
+    <span class="text-warning">与内容无关的评论将被删除，严重者禁用帐号！</span>
   <% end %>
-  <div class="field simple-kindeditor">
-    <%= f.kindeditor :details, width: '80%', height: '180px', items: f.simple_kindeditor_items %>
-  </div>
-  <%= f.submit '发表评论', :class => 'btn btn-primary' %>
-  <span class="text-warning">与内容无关的评论将被删除，严重者禁用帐号！</span>
+<% else %>
+  <span class="text-warning">提示：无法评论该文章，该文章被设置为禁止评论。</span>
 <% end %>

@@ -10,7 +10,7 @@
 #
 
 class Comment < ActiveRecord::Base
-  include ApplicationHelper
+  include Aggregation
   attr_accessible :details
   belongs_to :experience
   belongs_to :user

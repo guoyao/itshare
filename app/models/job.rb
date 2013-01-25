@@ -40,4 +40,8 @@ class Job < ActiveRecord::Base
     Job.unscoped.rankings.limit(count)
   end
 
+  def company?
+    company.strip.empty?
+  end
+
 end

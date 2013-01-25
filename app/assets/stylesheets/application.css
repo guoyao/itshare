@@ -190,6 +190,10 @@ img.portrait {
   height: 48px;
 }
 
+a img {
+  margin-right: 4px;
+}
+
 .required-mark {
   color: #ff0000;
   padding-right: 10px;

@@ -40,4 +40,8 @@ class Review < ActiveRecord::Base
     Review.unscoped.rankings.limit(count)
   end
 
+  def company?
+    company.strip.empty?
+  end
+
 end

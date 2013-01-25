@@ -5,6 +5,7 @@
       <strong class="title">
         <%= link_to (t 'controller.experiences'), experiences_path %>
       </strong>
+      <span class="pull-right"><%= link_to '更多»', experiences_path %></span>
     </div>
     <ul class="article-list">
       <% @experiences.each do |experience| %>
@@ -21,6 +22,7 @@
       <strong class="title">
         <%= link_to (t 'controller.reviews'), reviews_path %>
       </strong>
+      <span class="pull-right"><%= link_to '更多»', reviews_path %></span>
     </div>
     <ul class="article-list">
       <% @reviews.each do |review| %>
@@ -35,10 +37,11 @@
 </div>
 
 <div class="table-bordered border-left margin-top20">
-  <div class="top-title-container">
+  <div class="top-title-container" style="background-color: #eeeeee;">
     <strong class="title">
       <%= link_to (t 'controller.jobs'), jobs_path %>
     </strong>
+    <span class="pull-right"><%= link_to '更多»', jobs_path %></span>
   </div>
   <ul class="article-list">
     <% @jobs.each do |job| %>

@@ -1,3 +1,4 @@
+# encoding: utf-8
 module Aggregation
   def created_at_from_now
     time_from_now(created_at)
@@ -12,7 +13,15 @@ module Aggregation
   end
 
   def details_available?(is_current_user = false)
-    private ? is_current_user : true
+    private? ? is_current_user : true
+  end
+
+  def private?
+    private == 1
+  end
+
+  def comment_able?
+    comment_able == 1
   end
 
   private

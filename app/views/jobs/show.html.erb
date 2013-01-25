@@ -21,22 +21,26 @@
 
   <div class="padding10">
     <!--<p id="notice"><%#= notice %></p>-->
-
-    <h5 style="display:<%= @job.company.strip.empty? ? 'none' : 'block' %>;">
-      @<%= @job.company %>
-    </h5>
-
     <p>
+      <% if @job.details_available?(current_user?(@job.user)) then  %>
+      <h5 style="display:<%= @job.company? ? 'none' : 'block' %>;">
+        @<%= @job.company %>
+      </h5>
       <%= @job.details.html_safe %>
+    <% else %>
+      <span class="text-warning">提示：无法查看该文章的具体内容，该文章被设置为私有。</span>
+    <% end %>
     </p>
   </div>
 
   <div class="bottom-title-container">
     <% if signed_in? && current_user?(@job.user) then %>
-      <%= link_to '编辑', edit_job_path(@job) %>
+      <%= link_to add_cdn_path(image_tag 'edit_24.png') + t('common.edit_btn_label'), edit_job_path(@job) %>
+      <span class="divider">/</span>
+      <%= link_to add_cdn_path(image_tag 'delete_24.png') + t('common.delete_btn_label'), @job, method: :delete, data: {confirm: (t 'common.alert.delete')} %>
       <span class="divider">/</span>
     <% end %>
-    <%= link_to '返回', jobs_path %>
+    <%= link_to add_cdn_path(image_tag 'back_24.png') + '返回', jobs_path %>
   </div>
 </div>
 

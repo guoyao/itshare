@@ -10,7 +10,7 @@
 #
 
 class ReviewComment < ActiveRecord::Base
-  include ApplicationHelper
+  include Aggregation
   attr_accessible :details
   belongs_to :review
   belongs_to :user

@@ -40,4 +40,8 @@ class Experience < ActiveRecord::Base
     Experience.unscoped.rankings.limit(count)
   end
 
+  def company?
+    company.strip.empty?
+  end
+
 end
