@@ -6,6 +6,7 @@ gem 'bcrypt-ruby', '3.0.1'
 gem 'rails_kindeditor', '~> 0.3.11'
 gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
+gem 'oauth2', '0.8.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

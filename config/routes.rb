@@ -22,6 +22,10 @@ Itshare::Application.routes.draw do
   get 'index' => 'index#index'
   get 'about' => 'about#index'
 
+  get 'auth/github', to: 'openid#github_auth', as: :auth_github
+
+  get 'auth/github/callback', to: 'openid#github_auth_succeed'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -4,19 +4,28 @@
   </div>
 
   <div class="padding10">
-    <h4><%= @user.new_record? ? '用户注册' : '资料修改' %></h4>
+    <h4><%= flash[:email_from_openid] ? '完善个人资料' : (@user.new_record? ? '用户注册' : '资料修改') %></h4>
     <hr/>
+    <div class="margin-bottom20">
+      <p>支持以下几种自动注册方法（请点击以下图标进入）：</p>
+      <%= link_to(add_cdn_path(image_tag 'github_logo.gif', alt: 'github'), auth_github_path) %>
+    </div>
+
     <%= render 'shared/error_messages', object: f.object %>
 
-    <%= f.text_field :email, label: '电子邮箱：', label_class: 'form-label width100', required: true, required_mark_before_label: true %>
-    <%= f.text_field :name, label: '姓名：', label_class: 'form-label width100', required: true, required_mark_before_label: true, field_tip: '至多12个字符' %>
-    <%= f.password_field :password, label: '登录密码：', label_class: 'form-label width100', required: true, required_mark_before_label: true, field_tip: '至少6个字符' %>
-    <%= f.password_field :password_confirmation, label: '密码确认：', label_class: 'form-label width100', required: true, required_mark_before_label: true %>
+    <%= f.text_field :email, readonly: flash[:email_from_openid] ? 'readonly' : false, label: '电子邮箱：', label_class: 'form-label width100', required: true, required_mark_before_label: true %>
+    <%= f.text_field :name, maxlength: 12, label: '姓名：', label_class: 'form-label width100', required: true, required_mark_before_label: true, field_tip: '至多12个字符' %>
+    <% unless flash[:email_from_openid] %>
+      <%= f.password_field :password, label: '登录密码：', label_class: 'form-label width100', required: true, required_mark_before_label: true, field_tip: '至少6个字符' %>
+      <%= f.password_field :password_confirmation, label: '密码确认：', label_class: 'form-label width100', required: true, required_mark_before_label: true %>
+    <% end %>
     <%= f.radio_buttons :gender, [0, 1, -1], label: "性别：", label_class: 'form-label width100', labels: ["男", "女", "保密"] %>
 
     <div class="field">
-      <%= f.submit '提交注册信息', :class => 'btn btn-primary' %>
-      <%= link_to '已有账户', signin_path, :class => 'btn btn-primary' %>
+      <%= f.submit flash[:email_from_openid] ? '进入IT Share' : '提交注册信息', :class => 'btn btn-primary' %>
+      <% unless flash[:email_from_openid] %>
+        <%= link_to '已有账户', signin_path, :class => 'btn btn-primary' %>
+      <% end %>
     </div>
   </div>
 

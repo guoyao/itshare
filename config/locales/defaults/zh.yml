@@ -4,6 +4,9 @@ zh:
     delete_btn_label: "删除"
     alert:
       delete: "确定删除？"
+  openid:
+    errors:
+      auth: '对不起，获取你的%{target}信息失败，请重试或选择其他方式登录！'
   will_paginate:
     previous_label: "<"
     next_label: ">"

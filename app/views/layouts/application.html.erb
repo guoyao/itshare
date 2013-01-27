@@ -11,7 +11,7 @@
     <%= add_cdn_path((stylesheet_link_tag 'bootstrap', :media => 'all'), 'href') %>
     <%= add_cdn_path((stylesheet_link_tag 'bootstrap-responsive', :media => 'all'), 'href') %>
     <%= add_cdn_path((stylesheet_link_tag 'application', :media => 'all'), 'href') %>
-    <% if action_name == 'create' || action_name == 'update' then %>
+    <% if action_name == 'create' || action_name == 'update' || flash[:error] then %>
       <%= add_cdn_path((stylesheet_link_tag 'scaffolds', :media => 'all'), 'href') %>
     <% end %>
     <%= add_cdn_path(javascript_include_tag 'application') %>

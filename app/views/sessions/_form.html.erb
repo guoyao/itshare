@@ -6,8 +6,8 @@
   <div class="padding10">
     <h4>用户登录</h4>
     <hr/>
-    <% if flash.now[:error] %>
-      <%= render 'shared/error_messages', object: {errors: [flash.now[:error]]} %>
+    <% if flash.now[:error] || flash[:error] then %>
+      <%= render 'shared/error_messages', object: {errors: [flash.now[:error] ? flash.now[:error] : flash[:error]]} %>
     <% end %>
 
     <%= f.text_field :email, label: '电子邮箱：', label_class: 'form-label width100', required: true, required_mark_before_label: true %>
