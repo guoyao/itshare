@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.11'
+gem 'thin', '1.5.0'
 #gem 'bootstrap-sass', '2.2.2'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'rails_kindeditor', '~> 0.3.11'
