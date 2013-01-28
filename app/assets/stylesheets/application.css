@@ -265,6 +265,13 @@ div.field a[class*='btn'] {
   margin-left: 10px;
 }
 
+/* override styles in bootstrap */
+
+.dropdown-menu li > a {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 /* following styles used in develop only*/
 
 .red-border {
