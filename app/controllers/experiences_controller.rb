@@ -38,7 +38,7 @@ class ExperiencesController < ApplicationController
   end
 
   def edit
-    @experience = Experience.find(params[:id])
+    @experience = Experience.find_by_id_and_user(params[:id], current_user)
   end
 
   def create
