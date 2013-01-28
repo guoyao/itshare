@@ -38,7 +38,10 @@ class JobsController < ApplicationController
   end
 
   def edit
-    @job = Job.find(params[:id])
+    @job = Job.find_by_id_and_user_id(params[:id], current_user.id)
+    if @job.nil? then
+      redirect_to root_path
+    end
   end
 
   def create
@@ -65,7 +68,10 @@ class JobsController < ApplicationController
   end
 
   def destroy
-    @job = Job.find(params[:id])
+    @job = Job.find_by_id_and_user_id(params[:id], current_user.id)
+    if @job.nil? then
+      redirect_to root_path
+    end
     @job.destroy
 
     redirect_to jobs_url

@@ -38,7 +38,10 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-    @review = Review.find(params[:id])
+    @review = Review.find_by_id_and_user_id(params[:id], current_user.id)
+    if @review.nil? then
+      redirect_to root_path
+    end
   end
 
   def create
@@ -65,7 +68,10 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    @review = Review.find(params[:id])
+    @review = Review.find_by_id_and_user_id(params[:id], current_user.id)
+    if @review.nil? then
+      redirect_to root_path
+    end
     @review.destroy
 
     redirect_to reviews_url

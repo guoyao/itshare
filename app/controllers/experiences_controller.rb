@@ -38,7 +38,10 @@ class ExperiencesController < ApplicationController
   end
 
   def edit
-    @experience = Experience.find_by_id_and_user(params[:id], current_user)
+    @experience = Experience.find_by_id_and_user_id(params[:id], current_user.id)
+    if @experience.nil? then
+      redirect_to root_path
+    end
   end
 
   def create
@@ -65,7 +68,10 @@ class ExperiencesController < ApplicationController
   end
 
   def destroy
-    @experience = Experience.find(params[:id])
+    @experience = Experience.find_by_id_and_user_id(params[:id], current_user.id)
+    if @experience.nil? then
+      redirect_to root_path
+    end
     @experience.destroy
 
     redirect_to experiences_url

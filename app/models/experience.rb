@@ -40,14 +40,6 @@ class Experience < ActiveRecord::Base
     Experience.unscoped.rankings.limit(count)
   end
 
-  def self.find_by_id_and_user(id, user)
-    experience = nil
-    if id > 0 && user then
-      experience = Experience.find_by_id_and_user_id(id, user.id)
-    end
-    experience
-  end
-
   def company?
     company.strip.empty?
   end

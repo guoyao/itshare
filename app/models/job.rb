@@ -40,14 +40,6 @@ class Job < ActiveRecord::Base
     Job.unscoped.rankings.limit(count)
   end
 
-  def self.find_by_id_and_user(id, user)
-    job = nil
-    if id > 0 && user then
-      job = Job.find_by_id_and_user_id(id, user.id)
-    end
-    job
-  end
-
   def company?
     company.strip.empty?
   end

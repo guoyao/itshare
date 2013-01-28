@@ -40,14 +40,6 @@ class Review < ActiveRecord::Base
     Review.unscoped.rankings.limit(count)
   end
 
-  def self.find_by_id_and_user(id, user)
-    review = nil
-    if id > 0 && user then
-      review = Review.find_by_id_and_user_id(id, user.id)
-    end
-    review
-  end
-
   def company?
     company.strip.empty?
   end
