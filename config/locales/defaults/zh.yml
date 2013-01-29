@@ -1,9 +1,25 @@
 zh:
   common:
+    male: "男"
+    female: "女"
+    secret: "保密"
+    fellow: "关注"
+    fans: "粉丝"
+    credits: "积分"
     edit_btn_label: "编辑"
     delete_btn_label: "删除"
+    monday: "星期一"
+    tuesday: "星期二"
+    wednesday: "星期三"
+    thursday: "星期四"
+    friday: "星期五"
+    saturday: "星期六"
+    sunday: "星期天"
     alert:
       delete: "确定删除？"
+  format:
+    date:
+      long: "%Y年%m月%d日"
   openid:
     errors:
       auth: '对不起，获取你的%{target}信息失败，请重试或选择其他方式登录！'

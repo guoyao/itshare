@@ -14,6 +14,7 @@
 #
 
 class User < ActiveRecord::Base
+  include Aggregation
   attr_accessible :email, :gender, :name, :password, :password_confirmation
   has_secure_password
   has_many :experiences, dependent: :destroy

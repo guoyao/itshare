@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= render 'layouts/head_template' %>
+    <%= add_cdn_path((stylesheet_link_tag 'users', :media => 'all'), 'href') %>
+  </head>
+  <body>
+    <%= render 'layouts/header' %>
+
+    <div class="container">
+      <div class="row">
+        <div class="span3">
+          <%= render 'layouts/user_space_sidebar' %>
+        </div>
+        <div class="span9">
+          <%= yield %>
+        </div>
+      </div>
+
+      <%= render 'layouts/footer' %>
+    </div>
+
+    <%= add_cdn_path(javascript_include_tag 'bootstrap') %>
+  </body>
+</html>

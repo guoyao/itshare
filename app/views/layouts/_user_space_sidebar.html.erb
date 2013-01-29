@@ -1,0 +1,19 @@
+<div class="table-bordered border-left right-nav-container" style="color: #666666;">
+  <div class="top-title-container">
+    <strong>基本信息</strong>
+  </div>
+  <div class="padding10">
+    <%= link_to (add_cdn_path(image_tag 'portrait.gif', class: 'thumbnail portrait pull-left', title: @user.name)), user_path(@user) %>
+    <div style="margin-left: 67px;line-height: 28px;">
+      <%= link_to @user.name, user_path(@user), title: gender_text(@user.gender) %><br />
+      <%= add_cdn_path(gender_image_tag(@user.gender)) %> <%= link_to '关注此人', '#' %><br />
+    </div>
+    <div style="padding-top: 4px; line-height: 28px;">
+      <span style="margin-right: 5px;"><%= link_to "#{t('common.fellow')}(0)", '#' %></span>
+      <span style="margin-right: 5px;"><%= link_to "#{t('common.fans')}(0)", '#' %></span>
+      <span><%= link_to "#{t('common.credits')}(0)", '#' %></span>
+      <br/>
+      加入时间：<%= "#{@user.created_at_string(t 'format.date.long')}（#{@user.created_at_wday_string}）" %>
+    </div>
+  </div>
+</div>

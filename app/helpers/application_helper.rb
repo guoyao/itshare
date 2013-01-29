@@ -17,6 +17,27 @@ module ApplicationHelper
     text
   end
 
+  def gender_text(gender)
+    result = "#{t 'activerecord.attributes.user.gender'}: #{t 'common.secret'}"
+    if gender == 0 then
+      result = t 'common.male'
+    elsif gender == 1 then
+      result = t 'common.female'
+    end
+    result
+  end
+
+  def gender_image_tag(gender)
+    result = image_tag('secret_16.png', alt: "#{t('activerecord.attributes.user.gender')}: #{t 'common.secret'}",
+                                        title: "#{t('activerecord.attributes.user.gender')}: #{t 'common.secret'}")
+    if gender == 0 then
+      result = image_tag('male_16.png', alt: t('common.male'), title: t('common.male'))
+    elsif gender == 1 then
+      result = image_tag('female_16.png', alt: t('common.female'), title: t('common.female'))
+    end
+    result
+  end
+
   private
 
   def cloud_root_path

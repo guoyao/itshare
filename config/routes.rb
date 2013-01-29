@@ -19,8 +19,8 @@ Itshare::Application.routes.draw do
   match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
 
-  get 'index' => 'index#index'
-  get 'about' => 'about#index'
+  get 'index', to: 'index#index'
+  get 'about', to:'about#index'
 
   get 'auth/github', to: 'openid#github_auth', as: :auth_github
 

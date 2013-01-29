@@ -33,7 +33,7 @@
         </div>
         <% if signed_in? && current_user?(job.user) then %>
           <div class="pull-right">
-            <%= link_to add_cdn_path(image_tag 'edit_16.png', alt: t('common.edit_btn_label')), edit_job_path(job) %>
+            <%= link_to add_cdn_path(image_tag 'edit_16.png', alt: t('common.edit_btn_label'), title: t('common.edit_btn_label')), edit_job_path(job) %>
           </div>
         <% end %>
       </div>

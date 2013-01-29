@@ -12,6 +12,10 @@ module Aggregation
     created_at.strftime(format_string)
   end
 
+  def created_at_wday_string
+    wday_string(created_at)
+  end
+
   def details_available?(is_current_user = false)
     private? ? is_current_user : true
   end
@@ -40,5 +44,11 @@ module Aggregation
       result = "#{(seconds / 86400).to_i}天前"
     end
     result
+  end
+
+  def wday_string(date)
+    date.wday
+    #wdays = [t 'common.monday', t 'common.tuesday', t 'common.wednesday', t 'common.thursday', t 'common.friday', t 'common.saturday', t 'common.sunday']
+    #wdays[date.wday]
   end
 end
