@@ -47,8 +47,9 @@ module Aggregation
   end
 
   def wday_string(date)
-    date.wday
-    #wdays = [t 'common.monday', t 'common.tuesday', t 'common.wednesday', t 'common.thursday', t 'common.friday', t 'common.saturday', t 'common.sunday']
-    #wdays[date.wday]
+    wdays = [I18n.t('common.monday'), I18n.t('common.tuesday'), I18n.t('common.wednesday'),
+             I18n.t('common.thursday'), I18n.t('common.friday'), I18n.t('common.saturday'),
+             I18n.t('common.sunday')]
+    wdays[date.wday - 1]
   end
 end

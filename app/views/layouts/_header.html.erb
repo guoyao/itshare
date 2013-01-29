@@ -15,8 +15,8 @@
         <form class="navbar-form pull-right">
           <% if signed_in? then %>
             <div class="btn-group">
+              <%= link_to current_user.name, user_path(current_user), class: 'btn btn-info' %>
               <a class="btn btn-info dropdown-toggle" data-toggle="dropdown" href="#">
-                <%= current_user.name %>
                 <span class="caret"></span>
               </a>
               <ul class="dropdown-menu pull-right">

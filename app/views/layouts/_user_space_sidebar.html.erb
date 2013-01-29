@@ -16,4 +16,34 @@
       加入时间：<%= "#{@user.created_at_string(t 'format.date.long')}（#{@user.created_at_wday_string}）" %>
     </div>
   </div>
+
+  <% if signed_in? && current_user?(@user) %>
+    <div class="top-title-container">
+      <strong>个人信息管理</strong>
+    </div>
+    <div class="padding10">
+      <%= link_to '站内留言',  '#'%>
+    </div>
+  <% end %>
+
+  <div class="top-title-container">
+    <strong>关注</strong>
+  </div>
+  <div class="padding10">
+
+  </div>
+
+  <div class="top-title-container">
+    <strong>粉丝</strong>
+  </div>
+  <div class="padding10">
+
+  </div>
+
+  <div class="top-title-container">
+    <strong>访客统计</strong>
+  </div>
+  <div class="padding10">
+
+  </div>
 </div>

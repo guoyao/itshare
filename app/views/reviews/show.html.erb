@@ -16,7 +16,7 @@
         <%= @review.pageview %>次阅读
       </span>
     </div>
-    <%= add_cdn_path(image_tag 'portrait.gif', class: 'thumbnail pull-right portrait', style: 'margin-top: -6px;') %>
+    <%= link_to add_cdn_path(image_tag 'portrait.gif', class: 'thumbnail pull-right portrait', style: 'margin-top: -6px;'), user_path(@review.user) %>
   </div>
 
   <div class="padding10">
@@ -55,7 +55,7 @@
       <div class="row-fluid border-bottom" style="padding-bottom: 10px;">
         <div class="padding10">
           <div class="pull-left">
-            <%= add_cdn_path(image_tag 'portrait.gif', class: 'thumbnail portrait') %>
+            <%= link_to add_cdn_path(image_tag 'portrait.gif', class: 'thumbnail portrait'), user_path(review_comment.user) %>
           </div>
           <div class="span10 article-list word-wrap" style="margin-left: 10px;">
             <small>

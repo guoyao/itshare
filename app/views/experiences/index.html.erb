@@ -8,7 +8,7 @@
     <div class="row-fluid border-bottom" style="padding-bottom: 10px;">
       <div class="padding10">
         <div class="pull-left">
-          <%= add_cdn_path(image_tag 'portrait.gif', class: 'thumbnail portrait') %>
+          <%= link_to add_cdn_path(image_tag 'portrait.gif', class: 'thumbnail portrait'), user_path(experience.user) %>
         </div>
         <div class="span10 article-list word-wrap" style="margin-left: 10px;">
           <%= link_to experience.title, experience_path(experience), class: 'title' %>

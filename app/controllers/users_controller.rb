@@ -34,6 +34,11 @@ class UsersController < ApplicationController
       @user.password = @user.password_confirmation = newpass(6)
     end
     if @user.save
+      #message = Message.new
+      #message.from_user = User.find_by_email('guoyao.rb@gmail.com')
+      #message.to_user = @user
+      #message.details = "#{@user.name}您好，您已经成为IT Share会员，您的登录账号是#{@user.email}，初始密码是#{@user.password}，请即时修改密码和完善个人资料，我们倡议：所有IT Share的会员使用真实头像。感谢您对IT Share的支持。"
+      #message.save
       sign_in @user
       redirect_to root_path, notice: '恭喜你，注册成功！'
     else

@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   has_many :job_comments, dependent: :destroy
   has_many :review_comments, dependent: :destroy
-
+  #has_many :messages, dependent: :destroy
 
   before_save { self.email.downcase! }
   before_save :create_remember_token
@@ -35,6 +35,10 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: {minimum: 6}
 
   validates :password_confirmation, presence: true
+
+  def self.owner
+    User.find_by_email('guoyao.rb@gmail.com')
+  end
 
   private
 
