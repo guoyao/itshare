@@ -7,7 +7,7 @@
     <h4><%= flash[:email_from_openid] ? '完善个人资料' : (@user.new_record? ? '用户注册' : '资料修改') %></h4>
     <hr/>
     <div class="margin-bottom20">
-      <p>支持以下几种自动注册方法（请点击以下图标进入）：</p>
+      <p class="text-success">支持以下几种自动注册方法（请点击以下图标进入）：</p>
       <%= link_to(add_cdn_path(image_tag 'github_logo.gif', alt: 'github'), auth_github_path) %>
     </div>
 

@@ -17,6 +17,11 @@
       <%= f.submit '现在登录', :class => 'btn btn-primary' %>
       <%= link_to '注册新用户', signup_path, :class => 'btn btn-primary' %>
     </div>
+
+    <div style="margin-top: 35px;">
+      <p class="text-success">还可以使用其他帐号登录（请点击相应图标进入登录页面）：</p>
+      <%= link_to(add_cdn_path(image_tag 'github_logo.gif', alt: 'github'), auth_github_path) %>
+    </div>
   </div>
 
   <div class="bottom-title-container">
