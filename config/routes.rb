@@ -1,5 +1,7 @@
 Itshare::Application.routes.draw do
-  resources :users
+  resources :users do
+    resources :messages, only: [:index, :new, :create, :destroy]
+  end
 
   resources :jobs do
     resources :job_comments, only: [:create]

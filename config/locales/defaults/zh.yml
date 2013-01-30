@@ -21,6 +21,7 @@ zh:
     date:
       long: "%Y年%m月%d日"
   openid:
+    signup_message: "%{name}您好，您已经成为IT Share会员，您的登录账号是%{email}，初始密码是%{password}，请即时修改密码和完善个人资料，我们倡议：所有IT Share的会员使用真实头像。感谢您对IT Share的支持。"
     errors:
       auth: '对不起，获取你的%{target}信息失败，请重试或选择其他方式登录！'
   will_paginate:
@@ -34,6 +35,7 @@ zh:
     reviews: "企业点评"
     jobs: "招聘信息"
     about: "关于IT分享网"
+    messages: "站内留言"
     actions:
       new: "发表新文章"
   activerecord:

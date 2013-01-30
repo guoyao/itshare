@@ -20,7 +20,7 @@
                 <span class="caret"></span>
               </a>
               <ul class="dropdown-menu pull-right">
-                <li><a href="#"><%= add_cdn_path(image_tag 'message_16.png') %>站内留言（暂未完成）</a></li>
+                <li><%= link_to add_cdn_path(image_tag 'message_16.png') + t('controller.messages'), user_messages_path(current_user) %></li>
                 <li><a href="#"><%= add_cdn_path(image_tag 'article_16.png') %>我的文章（暂未完成）</a></li>
                 <li><a href="#"><%= add_cdn_path(image_tag 'people_16.png') %>我关注的人（暂未完成）</a></li>
                 <li><a href="#"><%= add_cdn_path(image_tag 'favorite_16.png') %>我的收藏夹（暂未完成）</a></li>

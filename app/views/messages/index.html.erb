@@ -1,0 +1,30 @@
+<div class="table-bordered border-left">
+  <div class="top-title-container text-article-info">
+    共收到<%= @received_messages.count %>条留言
+    <%= will_paginate @received_messages %>
+  </div>
+  <% if @received_messages.any? then %>
+    <% @received_messages.each do |message| %>
+      <div class="row-fluid border-bottom" style="padding-bottom: 10px;">
+        <div class="padding10">
+          <div class="pull-left">
+            <%= link_to add_cdn_path(image_tag 'portrait.gif', class: 'thumbnail portrait'), user_path(message.from_user) %>
+          </div>
+          <div class="span10 article-list word-wrap" style="margin-left: 10px;">
+            <%= link_to "@#{message.from_user.name}", user_path(message.from_user) %>：
+            <br/>
+            <%= message.details.html_safe %>
+          </div>
+          <span class="text-article-info pull-left" style="margin-left: 73px; margin-top: 5px;"><%= message.created_at_from_now %></span>
+          <span class="text-article-info pull-right" style="margin-top: 5px;"><%= link_to t('common.delete_btn_label'), user_message_path(current_user, message), method: :delete, data: {confirm: t('common.alert.delete')} %></span>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="bottom-title-container text-article-info">
+      共收到<%= @received_messages.count %>条留言
+      <%= will_paginate @received_messages %>
+    </div>
+  <% end %>
+</div>
+

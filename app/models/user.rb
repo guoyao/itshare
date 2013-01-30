@@ -21,7 +21,8 @@ class User < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   has_many :job_comments, dependent: :destroy
   has_many :review_comments, dependent: :destroy
-  #has_many :messages, dependent: :destroy
+  has_many :received_messages, class_name: 'Message', foreign_key: 'to_user_id', dependent: :destroy
+  has_many :sent_messages, class_name: 'Message', foreign_key: 'from_user_id', dependent: :destroy
 
   before_save { self.email.downcase! }
   before_save :create_remember_token
