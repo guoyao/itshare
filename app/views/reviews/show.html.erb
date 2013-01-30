@@ -52,24 +52,22 @@
     </div>
 
     <% @review_comments.each do |review_comment| %>
-      <div class="row-fluid border-bottom" style="padding-bottom: 10px;">
-        <div class="padding10">
-          <div class="pull-left">
+      <table class="border-bottom" style="width: 100%;">
+        <tr>
+          <td class="padding10" style="width: 58px; vertical-align: top; border: 0;">
             <%= link_to add_cdn_path(image_tag 'portrait.gif', class: 'thumbnail portrait'), user_path(review_comment.user) %>
-          </div>
-          <div class="span10 article-list word-wrap" style="margin-left: 10px;">
-            <small>
-              <span class="text-article-info">
-                <%= review_comment.user.name %>
-                <span class="dot-divider">•</span>
-                <%= review_comment.created_at_from_now %>
-              </span>
-            </small>
+          </td>
+          <td style="padding: 10px 10px 10px 0; border: 0;">
+            <span class="text-article-info">
+              <%= review_comment.user.name %>
+              <span class="dot-divider">•</span>
+              <%= review_comment.created_at_from_now %>
+            </span>
             <br />
             <%= review_comment.details.html_safe %>
-          </div>
-        </div>
-      </div>
+          </td>
+        </tr>
+      </table>
     <% end %>
 
     <div class="bottom-title-container text-article-info">

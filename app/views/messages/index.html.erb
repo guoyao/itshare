@@ -5,20 +5,24 @@
   </div>
   <% if @received_messages.any? then %>
     <% @received_messages.each do |message| %>
-      <div class="row-fluid border-bottom" style="padding-bottom: 10px;">
-        <div class="padding10">
-          <div class="pull-left">
+      <table class="border-bottom" style="width: 100%;">
+        <tr>
+          <td rowspan="2" class="padding10" style="width: 58px; vertical-align: top; border: 0;">
             <%= link_to add_cdn_path(image_tag 'portrait.gif', class: 'thumbnail portrait'), user_path(message.from_user) %>
-          </div>
-          <div class="span10 article-list word-wrap" style="margin-left: 10px;">
+          </td>
+          <td style="padding: 10px 10px 0 0; border: 0;">
             <%= link_to "@#{message.from_user.name}", user_path(message.from_user) %>：
             <br/>
             <%= message.details.html_safe %>
-          </div>
-          <span class="text-article-info pull-left" style="margin-left: 73px; margin-top: 5px;"><%= message.created_at_from_now %></span>
-          <span class="text-article-info pull-right" style="margin-top: 5px;"><%= link_to t('common.delete_btn_label'), user_message_path(current_user, message), method: :delete, data: {confirm: t('common.alert.delete')} %></span>
-        </div>
-      </div>
+           </td>
+        </tr>
+        <tr>
+          <td class="text-article-info" style="padding: 2px 10px 5px 0; border: 0;">
+            <%= message.created_at_from_now %>
+            <span class="pull-right"><%= link_to t('common.delete_btn_label'), user_message_path(current_user, message), method: :delete, data: {confirm: t('common.alert.delete')} %></span>
+          </td>
+        </tr>
+      </table>
     <% end %>
 
     <div class="bottom-title-container text-article-info">

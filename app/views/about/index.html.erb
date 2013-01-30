@@ -2,12 +2,13 @@
   <div class="top-title-container text-article-info">
     IT分享网 - 简介
   </div>
-  <div class="row-fluid">
-    <div class="padding10">
-      <div class="pull-left">
+
+  <table style="width: 100%;">
+    <tr>
+      <td class="padding10" style="width: 58px; vertical-align: top; border: 0;">
         <%= link_to add_cdn_path(image_tag 'portrait.gif', class: 'thumbnail portrait'), user_path(User.owner) %>
-      </div>
-      <div class="span10" style="margin-left: 10px;">
+      </td>
+      <td style="padding: 10px 10px 10px 0; border: 0;">
         <span class="text-article-info" style="line-height: 25px;">
           英文名：IT Share
           <span class="dot-divider">•</span>
@@ -22,9 +23,10 @@
           <li style="margin-bottom: 5px;">提供一个空间给那些对现公司诸多不满的在职人员，空闲时来发发牢骚；</li>
           <li style="margin-bottom: 5px;">为那些即将走出校园，走向社会的莘莘学子，以及那些蠢蠢欲动的在职人员提供宝贵的经验及内幕；</li>
         </ul>
-        当然，要实现以上目的，需要我们大家的共同努力！<br/>
-        <span class="text-success" style="line-height: 32px;">最后仅代表广大战斗在一线的程序猿们，祝大家新年快乐，财源滚滚，最重要的是身体健康！远离熬夜！</span>
-      </div>
-    </div>
-  </div>
+        <p style="margin: 10px 0;">当然，要实现以上目的，需要我们大家的共同努力！</p>
+        <span class="text-success">最后仅代表广大战斗在一线的程序猿们，祝大家新年快乐，财源滚滚，最重要的是身体健康！远离熬夜！</span>
+      </td>
+    </tr>
+  </table>
+
 </div>
