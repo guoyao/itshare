@@ -19,7 +19,11 @@
         <tr>
           <td class="text-article-info" style="padding: 2px 10px 5px 0; border: 0;">
             <%= message.created_at_from_now %>
-            <span class="pull-right"><%= link_to t('common.delete_btn_label'), user_message_path(current_user, message), method: :delete, data: {confirm: t('common.alert.delete')} %></span>
+            <span class="pull-right">
+              <%= link_to '回复', new_user_message_path(message.from_user, message) %>
+              <%= link_to_function '回复', "popup('#{new_user_message_path(message.from_user, message)}')" %>
+              <%= link_to t('common.delete_btn_label'), user_message_path(current_user, message), method: :delete, data: {confirm: t('common.alert.delete')} %>
+            </span>
           </td>
         </tr>
       </table>

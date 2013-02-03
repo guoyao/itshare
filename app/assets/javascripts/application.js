@@ -13,3 +13,25 @@
 //= require jquery
 //= require jquery_ujs
 //= require kindeditor
+
+/**
+ * 使用ajax提交数据
+ */
+function ajaxPost(url, param, successCallback) {
+    $.ajax({
+        type:'POST',
+        cache:false,
+        url:url,
+        data:param,
+        success:successCallback,
+        error:function (html) {
+            alert("提交数据失败，代码:" + html.status + "，请稍候再试");
+        }
+    });
+}
+
+function popup(url) {
+    ajaxPost(url, "", function (data) {
+        $.fancybox(data);
+    });
+}

@@ -104,6 +104,14 @@ label {
   border-radius: 4px 4px 0 0;
 }
 
+.top-title-container[class*='middle'] {
+  border-top: 1px solid #ebebeb;
+  border-bottom: 1px solid #ebebeb;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+
 .top-title-container[class*='higher'] {
   height: 48px;
   line-height: 25px;

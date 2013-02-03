@@ -14,7 +14,8 @@ class MessagesController < ApplicationController
   end
 
   def new
-    @message = Message.new
+    render :text => "hello"
+    #@message = Message.new
   end
 
   def create
