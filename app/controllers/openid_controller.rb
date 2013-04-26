@@ -34,7 +34,10 @@ class OpenidController < ApplicationController
   private
 
   def client
-    OAuth2::Client.new('a71300c68cb0e9cd4b85', '25639de5c9d0737d25e9736b0359b6eafd19c452',
+    # replace 'client_id' & 'client_secret_id' with your real github account info
+    client_id = '***********'
+    client_secret_id = '**********************************'
+    OAuth2::Client.new(client_id, client_secret_id,
                        :site => 'https://api.github.com',
                        :authorize_url => 'https://github.com/login/oauth/authorize',
                        :token_url => 'https://github.com/login/oauth/access_token')
