@@ -20,3 +20,4 @@
 /db/schema.rb
 /public/assets
 /public/uploads
+*.lock

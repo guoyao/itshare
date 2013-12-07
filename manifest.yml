@@ -1,0 +1,15 @@
+---
+applications:
+- name: itshare
+  memory: 256M
+  instances: 1
+  host: itshare
+  domain: cfapps.io
+  path: .
+  command: rake db:migrate
+  services:
+    itshare-db-production:
+      label: cleardb
+      provider: cleardb
+      version: n/a
+      plan: spark

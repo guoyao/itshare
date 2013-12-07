@@ -1,6 +1,8 @@
-source 'https://rubygems.org'
+#source 'https://rubygems.org'
 
-gem 'rails', '3.2.13'
+source 'http://ruby.taobao.org'
+
+gem 'rails', '3.2.16'
 gem 'thin', '1.5.0'
 #gem 'bootstrap-sass', '2.2.2'
 gem 'bcrypt-ruby', '3.0.1'
@@ -14,7 +16,7 @@ gem 'oauth2', '0.8.0'
 
 group :development, :test do
   gem 'sqlite3'
-  gem 'rspec-rails', '2.12.2'
+  gem 'rspec-rails', '> 2.12.2'
 end
 
 group :development do
