@@ -6,7 +6,6 @@ applications:
   host: itshare
   domain: cfapps.io
   path: .
-  command: rake db:migrate
   services:
     itshare-db-production:
       label: cleardb
